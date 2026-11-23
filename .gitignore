@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+__pycache__/
+*.pyc
+controls/G_*.gp
+drg_hits.tsv
+hits.tsv
