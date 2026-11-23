@@ -1,6 +1,7 @@
 # Characteristic vectors and strongly regular graphs at Krein equality
 
-Draft preprint (`krein_unified.tex`, `krein_unified.pdf`) and the scripts and data behind every count in it.
+Dylan Plummer. Draft preprint (`krein_unified.tex`, `krein_unified.pdf`) and the scripts and data behind
+every count in it.
 
 A primitive strongly regular graph with integral eigenvalues and vanishing Krein parameter q^s_ss gives
 an integral tight frame whose first and third moments vanish. The vanishing third moment lifts a
@@ -11,15 +12,33 @@ in the parameters (Theorem 1.1). Consequences include:
 - no triangle-free Krein graph Kre(t) for t ≡ 4 (mod 8), in particular no srg(784,116,0,20), and no
   3-(t(t^2+3t+1), t(t+1), t-1) design for these t (e.g. no 3-(116,20,3) design);
 - no srg((t^2+2t-1)(t^2+3t+1), t^2(t+2), 0, t^2) for t ≡ 4 (mod 8), in particular no srg(667,96,0,16):
-  a Norton-algebra argument shows that every such graph comes from a design as above;
+  a Norton-algebra argument shows that every such graph comes from a design as above, so for every
+  t >= 1 it exists if and only if Kre(t) does;
 - two further infinite series, starting with srg(392,115,18,40) and srg(1080,364,88,140);
 - further families from a projection away from one vertex and from the second moment (including
   Biggs's triangle-free families with mu = 2, 4, 6 and a Pell family), and exclusions of
   distance-regular graphs.
 
+## Short proofs of known results
+
+The same tools give short proofs of several known results:
+
+| result | earlier proof | here |
+|---|---|---|
+| no srg(266,45,0,9) | Akiyama, arXiv:2609.08319 (long formalized lattice argument) | Corollary 5.2, t = 3: such a graph would give Kre(3), which does not exist (Gavrilyuk–Makhnev; Kaski–Östergård's computer classification of biplanes with k = 11) |
+| srg(77,16,0,4) is unique | Brouwer, J. Graph Theory 7 (1983) | Theorem 5.1, t = 2: the graph is the disjointness graph of a 3-(22,6,1) design, and S(3,6,22) is unique |
+| no srg(75,32,10,16), no srg(76,35,18,14) | Azarija–Marc, Linear Algebra Appl. 557 (2018) | Proposition 4.4, a few lines (Table 1) |
+| no srg(76,30,8,14) | Bondarenko–Prymak–Radchenko, Linear Algebra Appl. 527 (2017) | Proposition 4.4, a few lines (Table 1) |
+| no srg(289,54,1,12) | Bondarenko–Radchenko, J. Combin. Theory Ser. B 103 (2013) | Proposition 4.4, a few lines (Table 1) |
+| no distance-regular graph {594,550,45,1;1,45,550,594} | Cesarz–Williford, arXiv:2610.05420 | Theorem 3.1 (Table 3) |
+
+Proposition 4.4 is a special case of Kovaľ's discriminant-form condition. The Table 1 rows can be
+recomputed with `scan_complete.py` (functions `frame_s` and `criterion`), or by hand from the data in
+the table.
+
 Environment: Python 3 with sympy, numpy and matplotlib; PARI/GP for the lattice controls.
 
-## Smith census (Section 9, Table 1, Figure 2)
+## Smith census (Section 9, Table 2, Figure 2)
 
     python -B scan_complete.py 135 smith_complete_r135.tsv      # about 3 s
 
@@ -71,7 +90,7 @@ homomorphism counts, checks both against brute force on five triangle-free stron
 verifies the identities of the proof of Theorem 5.1 in Q(t), and, for t = 2, recovers the 3-(22,6,1)
 design from a shuffled srg(77,16,0,4) through the Norton algebra.
 
-## Distance-regular graphs (Section 8, Table 2)
+## Distance-regular graphs (Section 8, Table 3)
 
 The machine-readable BCN tables (files IA3P, IA4a, IA5a, IA6b, ..., IA17b) are available from Brouwer's
 pages, <https://www.win.tue.nl/~aeb/drg/>. They are not redistributed here; put them in a directory
@@ -89,7 +108,7 @@ and `frame_test.py` are the original implementation used by the projector-sum au
 (`frame_check.controls`): Hamming, Johnson, Grassmann, dual polar, bilinear forms, halved cubes,
 generalized hexagons and octagons, and ten sporadic graphs.
 
-Derived graphs in Table 2: for bipartite arrays the halved graph is (A^2 - kI)/c_2 on one half; its
+Derived graphs in Table 3: for bipartite arrays the halved graph is (A^2 - kI)/c_2 on one half; its
 complement at 1014 / 5046 / 11774 is (507,44,1,4) / (2523,182,1,14) / (5887,216,5,8), each also failing
 Prop. 4.4. At 750, A_1 + A_3 is (750,210,55,60). At 616 a fusion gives (616,165,44,44), which is open;
 Prop. 4.4 does not apply to it or its complement.

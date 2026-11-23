@@ -50,15 +50,17 @@ $t\equiv4\pmod 8$, and with them the corresponding extensions of Cameron's
 second family of symmetric designs (for example, there is no
 $3$-$(116,20,3)$ design). A Norton-algebra argument shows that a graph with
 the parameters of the second subconstituent of $\Kre(t)$ always comes from
-such a design, so these are excluded as well; for $t=3$ this gives a short
-proof that there is no $\mathrm{srg}(266,45,0,9)$. The condition also excludes two
+such a design, so these are excluded as well. The condition also excludes two
 further infinite series of feasible parameter sets attaining Krein equality.
 The first members of these families, $(784,116,0,20)$, $(667,96,0,16)$,
 $(392,115,18,40)$ and $(1080,364,88,140)$, were open in Brouwer's table. A
 projection from one vertex and a second-moment variant give further
 infinite families, among them infinitely many feasible members of Biggs's
 triangle-free families with $\mu=2,4,6$ and a Pell family beginning with
-$(1682,820,378,420)$, as well as exclusions of distance-regular graphs.
+$(1682,820,378,420)$, as well as exclusions of distance-regular graphs. The
+same tools give short proofs of several known results: there is no
+strongly regular graph with parameters $(266,45,0,9)$, $(75,32,10,16)$,
+$(76,30,8,14)$ or $(289,54,1,12)$, and the $\mathrm{srg}(77,16,0,4)$ is unique.
 \end{abstract}
 
 %======================================================================
@@ -176,9 +178,7 @@ knowledge, open. Part (d) needs one more idea: in \S\ref{sec:sub} we show,
 using the Norton algebra of an eigenspace, that every graph with these
 parameters is the disjointness graph of a design as in (b), so that for every
 $t\ge1$ it exists if and only if $\Kre(t)$ does (Corollary~\ref{cor:equiv}).
-For $t=3$ this gives a short proof, relative to the nonexistence of
-$\Kre(3)$, that there is no $\mathrm{srg}(266,45,0,9)$, a result recently
-obtained by Akiyama \cite{Akiyama} by a long lattice argument. The rows $392$, $667$, $784$ and $1080$ (with their complements) are the only open entries of
+The rows $392$, $667$, $784$ and $1080$ (with their complements) are the only open entries of
 Brouwer's table ($n\le1300$, accessed 18~November~2026) that we exclude, but
 they are the first members of infinite families. Further
 infinite families come from a projection away from one vertex
@@ -186,6 +186,21 @@ infinite families come from a projection away from one vertex
 $3/16$, $7/46$) and from the second moment alone (Theorems~\ref{thm:fixed}
 and~\ref{thm:pell} and Corollary~\ref{cor:biggs}: fixed $(\lambda,\mu)$,
 Biggs's triangle-free families with $\mu=2,4,6$, and a Pell family).
+
+\paragraph{Short proofs of known results.}
+The same tools give short proofs of several known results.
+Corollary~\ref{cor:equiv} shows that there is no $\mathrm{srg}(266,45,0,9)$,
+proved by Akiyama \cite{Akiyama} with a long formalized lattice argument;
+our proof uses the nonexistence of $\Kre(3)$, which rests on the computer
+classification of biplanes \cite{KO}. The same corollary shows that the
+$\mathrm{srg}(77,16,0,4)$ is unique \cite{Br77}, because $S(3,6,22)$ is. The
+second-moment congruence of Proposition~\ref{prop:second}, a special case of
+Kova\v l's discriminant-form condition \cite{Koval}, excludes
+$(75,32,10,16)$ and $(76,35,18,14)$ \cite{AM}, $(76,30,8,14)$ \cite{BPR} and
+$(289,54,1,12)$ \cite{BR} in a few lines each (Table~\ref{tab:known}). The
+original proofs are considerably longer. Finally, Theorem~\ref{thm:frame} gives an
+independent proof that there is no distance-regular graph with intersection
+array $\{594,550,45,1;1,45,550,594\}$ \cite{CW}.
 
 \paragraph{The argument for $\Kre(4)$.}
 Suppose $\Gamma=\Kre(4)$. The matrix $H=4I-A+\tfrac17J=28E_s$ is positive
@@ -585,7 +600,25 @@ $\Delta\equiv\odd(b)^{g+1}$, and we substitute \eqref{eq:trace}.
 
 This is a special case of the discriminant-form method \cite{BMV,Koval}. On
 Brouwer's table it excludes $154$ rows ($77$ complementary pairs), all already
-marked nonexistent. For a Smith graph the subconstituents are strongly regular
+marked nonexistent. Among them are rows whose nonexistence was first proved
+by much longer arguments; Table~\ref{tab:known} gives the data that make each
+of them a two-line check. In every row the odd prime divisors of $e$ are
+$\equiv1\pmod 4$ and $v_2(F)\le1$.
+\begin{table}[ht]\small\centering
+\caption{Known nonexistence results reproved by
+Proposition~\ref{prop:second}. The last two columns must agree modulo $4$;
+the requirement is $1+(br+a-1)n/F$ if $br+a$ is odd and $1+g$ if it is
+even.}\label{tab:known}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccccccc}\toprule
+parameters&$e$&$u$&$br+a$&$F$&$n/F$&$g$&requirement&$\odd(b)^{g+1}$\\\midrule
+$(75,32,10,16)$ \cite{AM}&$10$&$2/5$&$12$&$50$&$3/2$&$18$&$1+18\equiv3$&$5^{19}\equiv1$\\
+$(76,35,18,14)$ \cite{AM}&$10$&$7/19$&$140$&$190$&$2/5$&$56$&$1+56\equiv1$&$19^{57}\equiv3$\\
+$(76,30,8,14)$ \cite{BPR}&$10$&$7/19$&$45$&$190$&$2/5$&$18$&$1+44\cdot\frac25\equiv1$&$19^{19}\equiv3$\\
+$(289,54,1,12)$ \cite{BR}&$17$&$3/17$&$54$&$289$&$1$&$54$&$1+54\equiv3$&$17^{55}\equiv1$\\
+\bottomrule
+\end{tabular}
+\end{table} For a Smith graph the subconstituents are strongly regular
 with forced parameters \cite{CGS}, with eigenvalues $r,\,r-d$ and
 $r,\,r-(e-d)$, so Proposition~\ref{prop:second} applies to them as well.
 
@@ -1517,6 +1550,8 @@ $n$&array&$\theta$&$m$&$F$&$(\gamma_i)$&cubic&derived graph\\\midrule
 \bibitem{Akiyama} K.~Akiyama, Nonexistence of a strongly regular graph with
 parameters $(266,45,0,9)$: a certificate-free Lean proof, arXiv:2609.08319
 (2026).
+\bibitem{AM} J.~Azarija and T.~Marc, There is no $(75,32,10,16)$ strongly
+regular graph, \emph{Linear Algebra Appl.} 557 (2018) 62--83.
 \bibitem{BMV} E.~Bannai, A.~Munemasa and B.~Venkov, The nonexistence of
 certain tight spherical designs, \emph{Algebra i Analiz} 16(4) (2004) 1--23;
 English translation: \emph{St.\ Petersburg Math.\ J.} 16 (2005) 609--625.
@@ -1526,6 +1561,9 @@ arXiv:0911.2160 (2009).
 arXiv:0911.2455 (2009).
 \bibitem{Biggs3} N.~Biggs, The second subconstituent of some strongly regular
 graphs, arXiv:1003.0175 (2010).
+\bibitem{BR} A.~V. Bondarenko and D.~V. Radchenko, On a family of strongly
+regular graphs with $\lambda=1$, \emph{J.\ Combin.\ Theory Ser.\ B} 103
+(2013) 521--531.
 \bibitem{BPR} A.~V. Bondarenko, A.~Prymak and D.~Radchenko, Non-existence of
 $(76,30,8,14)$ strongly regular graph, \emph{Linear Algebra Appl.} 527 (2017)
 53--72.
