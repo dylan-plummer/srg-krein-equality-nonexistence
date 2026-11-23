@@ -1,6 +1,7 @@
 """Checks for Section 5.3 (second subconstituent of Kre(t)); srg conda env, about 1 minute.
 
-1. The homomorphism expansion of Phi(G) for triangle-free srgs agrees with brute force on
+1. Two expansions of Phi(G) for triangle-free srgs (cell partition, as in the paper, and
+   homomorphism counts) agree with brute force on
    Petersen, Clebsch, Gewirtz, M22 (77) and Higman-Sims.
 2. The identities of the proof of Theorem 5.1 hold in Q(t).
 3. Control t=2: from a shuffled srg(77,16,0,4) alone, the Norton algebra recovers 22 points
@@ -100,6 +101,41 @@ for name,A in [('Petersen',APet),('Clebsch',ACl),('Gewirtz',A56),('M22-77',A77),
     print('formula = brute force on',name,(n,k,0,mu))
 
 
+# --- cell-partition evaluation of Phi (Theorem 5.1, Step 1)
+def phi_cells(n,k,mu,w0,w1):
+    kb=n-1-k; y=w1-w0
+    def Qval(cells,E):
+        S1=sum(s*w for s,w in cells); S2=sum(s*w*w for s,w in cells)
+        SA=sum(E[(X,Y)]*cells[X][1]*cells[Y][1] for (X,Y) in E)
+        return (1-w0)*S2+y*SA+w0*S1**2
+    def complete(cells,E):
+        # fill rest-rest from degree count: total ordered pairs from R = size_R*k
+        R=len(cells)-1; out=sum(E.get((R,Y),0) for Y in range(len(cells)) if Y!=R)
+        E[(R,R)]=cells[R][0]*k-out
+        return E
+    def sym(E):
+        F=dict(E)
+        for (X,Y),v in E.items(): F[(Y,X)]=v
+        return F
+    # i=j: cells {i}, N=Gamma(i), R
+    c=[(1,1),(k,w1**2),(kb,w0**2)]
+    E=sym({(0,1):k,(1,2):k*(k-1)}); E[(1,1)]=0; E=complete(c,E); Qeq=Qval(c,E)
+    # i~j: {i},{j},Ai=Gamma(i)-{j},Aj,R
+    c=[(1,w1),(1,w1),(k-1,w1*w0),(k-1,w1*w0),(n-2*k,w0**2)]
+    E=sym({(0,1):1,(0,2):k-1,(1,3):k-1,(2,3):(k-1)*(mu-1),(2,4):(k-1)*(k-mu),(3,4):(k-1)*(k-mu)})
+    E[(2,2)]=0;E[(3,3)]=0; E=complete(c,E); Qadj=Qval(c,E)
+    # i!~j: {i},{j},C,Ai,Aj,R
+    c=[(1,w0),(1,w0),(mu,w1**2),(k-mu,w1*w0),(k-mu,w1*w0),(n-2-2*k+mu,w0**2)]
+    E=sym({(0,2):mu,(0,3):k-mu,(1,2):mu,(1,4):k-mu,(2,5):mu*(k-2),(3,4):(k-mu)*mu,(3,5):(k-mu)*(k-1-mu),(4,5):(k-mu)*(k-1-mu)})
+    for X in (2,3,4): E[(X,X)]=0
+    E=complete(c,E); Qnon=Qval(c,E)
+    return n*(Qeq+k*w1*Qadj+kb*w0*Qnon), (Qeq,Qadj,Qnon)
+for name,A in [('Petersen',APet),('Clebsch',ACl),('Gewirtz',A56),('M22-77',A77),('HS',AHS)]:
+    n_,k_,lam_,mu_=params(A); mu_=mu_.pop()
+    for a_,b_ in [(0.13,-0.31),(-0.2,0.45)]:
+        B_=brute(A,a_,b_); assert abs(float(phi_cells(n_,k_,mu_,a_,b_)[0])-B_)<1e-7*max(1,abs(B_))
+    print('cell partition = brute force on',name)
+
 # --- identities in Q(t)
 t=sp.symbols('t',positive=True)
 v=t*(t**2+3*t+1); K=t*(t+1); n=(t**2+2*t-1)*(t**2+3*t+1); k=t**2*(t+2); mu=t**2; ell=n-1-k
@@ -111,6 +147,11 @@ assert sp.simplify(w1+(t+1)/(t*(t+2)))==0 and sp.simplify(w0-1/((t+1)*(t+2)))==0
 M=1+k*w1**3+ell*w0**3
 assert sp.simplify(M-(t**2+t-1)*(t**2+3*t+1)/(t*(t+1)**2*(t+2)**2))==0
 assert sp.simplify(phi_formula(n,k,mu,w0,w1)-n**2*(g-2)*M**2/(g*(g-1)))==0
+Pc,(Qe,Qa,Qn)=phi_cells(n,k,mu,w0,w1)
+assert sp.simplify(Pc-n**2*(g-2)*M**2/(g*(g-1)))==0 and sp.simplify(Qe-M**2)==0
+assert sp.simplify(Pc-(t**2+t-1)*(t**2+2*t-1)*(t**2+3*t+1)**4*(t**3+3*t**2+t-3)/(t**2*(t+1)**5*(t+2)**5))==0
+assert sp.simplify(Qa-2*(t**2+t-1)*(t**2+3*t+1)**2/(t**3*(t+1)**2*(t+2)**5))==0
+assert sp.simplify(Qn-(t**2+3*t+1)**2*(t**5+7*t**4+15*t**3+11*t**2+t+1)/(t**2*(t+1)**5*(t+2)**5))==0
 tau=(g/n)**2*M; kap=tau/(g-1); rho=tau/(v-2*K)
 assert sp.simplify(rho**2*K*(v-K)-kap*g/n)==0
 for w,size in ((w1,0),(w0,t)): assert sp.simplify((K**2+w*K*(v-K))/v-size)==0

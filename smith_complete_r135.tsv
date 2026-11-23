@@ -4,7 +4,7 @@ n	k	lambda	mu	r	s	u	m	feasible	checks	A	V	S2P	S2S	tight4	realized
 50	21	4	12	1	-9	2/5	7	False	False	excl	na	True	False	False	False
 100	22	0	6	2	-8	1/5	22	True	True	pass	na	False	False	False	True
 112	30	2	10	2	-10	1/4	21	True	True	na	undet	False	False	False	True
-121	56	15	35	1	-21	5/11	8	False	False	excl	na	False	True	False	False
+121	56	15	35	1	-21	5/11	8	False	False	excl	na	False	False	False	False
 162	56	10	24	2	-16	1/3	21	True	True	undet	na	False	False	False	True
 275	112	30	56	2	-28	2/5	22	True	True	undet	na	False	False	True	True
 324	57	0	12	3	-15	1/6	57	True	True	pass	undet	False	False	False	False

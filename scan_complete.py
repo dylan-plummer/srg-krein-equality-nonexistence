@@ -114,6 +114,9 @@ def comp(row):
 
 def second_moment(row):
     for R in (row, comp(row)):
+        n_, k_, lam_, mu_ = R
+        if lam_ < 0 or mu_ < 0 or not 0 < k_ < n_ - 1:   # not a graph parameter set
+            continue
         fr = frame_s(*R)
         if fr and criterion(fr[0], fr[1], fr[2], fr[3], False):
             return True
@@ -216,7 +219,7 @@ def main():
         V = thm_vertex(n, k, lam, mu, r, s, m)
         S2P = second_moment(row)
         subs = subconstituents(n, k, lam, mu, r, s)
-        S2S = any(c is not None and second_moment(c) for c in subs)
+        S2S = any(c is not None and min(c[2], c[3]) >= 0 and second_moment(c) for c in subs)  # skip non-graph parameter sets
         u = Fr(k - r, n)
         tight4 = 2 * n == m * (m + 3)
         rows.append((n, k, lam, mu, r, s, str(u), m, feasible(*row),

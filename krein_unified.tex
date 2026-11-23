@@ -6,6 +6,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{placeins}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{microtype}
@@ -29,7 +30,7 @@
 \newcommand{\Kre}{\mathrm{Kre}}
 
 \title{Characteristic vectors and strongly regular graphs\\ at Krein equality}
-\author{\emph{[Authors]}}
+\author{Dylan Plummer}
 \date{}
 
 \begin{document}
@@ -49,10 +50,12 @@ $t\equiv4\pmod 8$, and with them the corresponding extensions of Cameron's
 second family of symmetric designs (for example, there is no
 $3$-$(116,20,3)$ design). A Norton-algebra argument shows that a graph with
 the parameters of the second subconstituent of $\Kre(t)$ always comes from
-such a design, so these are excluded as well. The condition also excludes two
+such a design, so these are excluded as well; for $t=3$ this gives a short
+proof that there is no $\mathrm{srg}(266,45,0,9)$. The condition also excludes two
 further infinite series of feasible parameter sets attaining Krein equality.
 The first members of these families, $(784,116,0,20)$, $(667,96,0,16)$,
-$(392,115,18,40)$ and $(1080,364,88,140)$, were open in Brouwer's table. A projection from one vertex and a second-moment variant give further
+$(392,115,18,40)$ and $(1080,364,88,140)$, were open in Brouwer's table. A
+projection from one vertex and a second-moment variant give further
 infinite families, among them infinitely many feasible members of Biggs's
 triangle-free families with $\mu=2,4,6$ and a Pell family beginning with
 $(1682,820,378,420)$, as well as exclusions of distance-regular graphs.
@@ -104,7 +107,8 @@ because this matrix has rank $g$, and $\Delta$ does not depend on the choice
 Let $\Gamma$ be a primitive strongly regular graph with integral eigenvalues
 and $q^s_{ss}=0$.
 \begin{enumerate}[label=\textup{(\alph*)}]
-\item If $br+a$ is odd and $v_2(F)\le2$, then $v_2(n)\ge v_2(F)$ and
+\item If $br+a$ is odd and $v_2(F)\le2$, then $v_2(n)\ge v_2(F)$, so that
+$n/F$ is a rational number with odd denominator, and
 \[
  \Delta\equiv1+(br+a-1)\,\frac nF\pmod 4 .
 \]
@@ -119,7 +123,11 @@ Smith graph with $v_2(F)$ small: the right sides of (a) and (b) are
 parameters, and by (c) so is $\Delta$ unless a prime $\equiv3\pmod4$ divides
 $L$; in families such as $\Kre(t)$ below, $\Delta$ can be computed even then.
 Since $g=(br+a)\,n/F$ (\S\ref{sec:srg}), (a) can also be written
-$n/F\equiv g+1-\Delta$, which is the form in which it is proved.
+$n/F\equiv g+1-\Delta$, which is the form in which it is proved. (Congruences
+between rationals with odd denominators are taken in $\Zt/4\Zt\cong\Z/4$; for
+example $n/F=118/13$ for one of the sets in Corollary~\ref{cor:sporadic}.)
+When (c) applies, (a) reads $\odd(b)^{g+1}\equiv1+(br+a-1)n/F$, a condition on
+the parameters alone; compare Proposition~\ref{prop:second}.
 
 \paragraph{Infinite families.}
 The triangle-free Smith graphs form a one-parameter family \cite[\S8.5]{BvM}:
@@ -166,8 +174,11 @@ concerns the second of Cameron's four families of extendable symmetric designs
 \cite{Cameron}; the existence of a symmetric $2$-$(115,19,3)$ design is, to our
 knowledge, open. Part (d) needs one more idea: in \S\ref{sec:sub} we show,
 using the Norton algebra of an eigenspace, that every graph with these
-parameters is the disjointness graph of a design as in (b). The rows $392$,
-$667$, $784$ and $1080$ (with their complements) are the only open entries of
+parameters is the disjointness graph of a design as in (b), so that for every
+$t\ge1$ it exists if and only if $\Kre(t)$ does (Corollary~\ref{cor:equiv}).
+For $t=3$ this gives a short proof, relative to the nonexistence of
+$\Kre(3)$, that there is no $\mathrm{srg}(266,45,0,9)$, a result recently
+obtained by Akiyama \cite{Akiyama} by a long lattice argument. The rows $392$, $667$, $784$ and $1080$ (with their complements) are the only open entries of
 Brouwer's table ($n\le1300$, accessed 18~November~2026) that we exclude, but
 they are the first members of infinite families. Further
 infinite families come from a projection away from one vertex
@@ -217,18 +228,21 @@ $w^2\equiv g+1-3=114\equiv2\pmod 4$. This is a contradiction.
 would see. The number at each end of an edge between two cells is the number of
 neighbors that a vertex of that cell has in the other cell. In
 $7(4I-A+\frac17J)$ the $116$ neighbors have Gram matrix $28I+J$, so they form a
-rational basis, and $\odd\det(28I+J)=7^{115}\cdot9\equiv3\pmod 4$. The blocks
-$\Gamma(x)\cap\Gamma(y)$ form a $3$-$(116,20,3)$ design.}\label{fig:kre4}
+rational basis. The blocks $\Gamma(x)\cap\Gamma(y)$ form a
+$3$-$(116,20,3)$ design.}\label{fig:kre4}
 \end{figure}
 
 \paragraph{Relation to earlier work, and scope.}
 Bannai, Munemasa and Venkov \cite{BMV} and Nebe and Venkov \cite{NV} excluded
 tight spherical designs using the integral lattices spanned by the designs
-together with their design strength \cite{Venkov}. Kova\v l \cite{Koval}
+together with their design strength \cite{Venkov}; characteristic vectors and
+van der Blij's congruence already appear there. Kova\v l \cite{Koval}
 adapted this to strongly regular graphs through discriminant forms; at
 $392$, $784$ and $1080$ his census leaves $4$, $4$ and $16$ admissible forms. For distance-regular graphs, Krein equality has been used
-combinatorially, through triple intersection numbers \cite{CJ,GVW}. Here we
-use the \emph{odd} third moment arithmetically. For odd $x$ one has
+combinatorially, through triple intersection numbers \cite{CJ,GVW}. Euclidean representations have also been combined with algebraic
+identities to exclude individual strongly regular graphs, for example
+$(76,30,8,14)$ \cite{BPR}. The new ingredient here is that we use the
+\emph{odd} third moment arithmetically. For odd $x$ one has
 $x^3-x\equiv x^2-1\pmod{16}$; applied to the inner products of a characteristic
 vector with the vertex vectors, this lifts the frame congruence for $Fw^2$
 from modulus $8$ to modulus $16$. When $v_2(F)\le2$ the extra factor of $2$
@@ -635,24 +649,15 @@ Since $t$ and hence $k=t(e+1)$ are even, this is $(t+3)$ times a square, so
 $\Delta\equiv t+3\equiv3$, a contradiction.
 \end{proof}
 
-The same computation ($\Delta\equiv t+3$ for even $t$ and $\Delta\equiv t$ for
-odd $t$, against $1+et\equiv1+t^2(t+3)$), with Theorem~\ref{thm:vertex} below,
-shows exactly what our tests say about $\Kre(t)$:
-\begin{center}\small
-\begin{tabular}{clll}\toprule
-$t\bmod 8$&Theorem~\ref{thm:main}&Theorem~\ref{thm:vertex}&example\\\midrule
-$0$&not applicable ($8\mid F$)&not applicable ($b$ odd)&\\
-$1,5$&not applicable ($16\mid F$)&congruence satisfied&$t=1$, exists\\
-$2,6$&satisfied ($\Delta\equiv1$)&not applicable ($b$ odd)&$t=2$, Higman--Sims\\
-$3,7$&satisfied ($\Delta\equiv3$)&satisfied&$t=3$, does not exist\\
-$4$&\textbf{excluded} ($\Delta\equiv3$, not $1$)&not applicable ($b$ odd)&$t=4$, Theorem~\ref{thm:headline}\\
-\bottomrule
-\end{tabular}
-\end{center}
-For odd $t$, the neighbor basis shows that the projected space $W$ of
-Theorem~\ref{thm:vertex} has $\det W$ in the square class of the odd number
-$k=g$, and the condition $k\equiv(-1)^{(k-1)/2}\pmod 4$ always holds. So $\Kre(3)$,
-which does not exist \cite{GM,KO}, is not excluded by these tests.
+The same computation decides every $t$. For even $t$ we have
+$\Delta\equiv t+3$; Theorem~\ref{thm:main}(a) applies when $8\nmid t$ and
+requires $\Delta\equiv1+et\equiv1$, which fails exactly for $t\equiv4\pmod 8$.
+For odd $t$ the neighbor basis gives $\Delta\equiv t\equiv1+et$, so
+Theorem~\ref{thm:main} (which applies when $t\equiv3\pmod 4$) never excludes
+$\Kre(t)$. Neither does Theorem~\ref{thm:vertex} below ($b=t+3$ is even):
+there $\det W$ lies in the square class of the odd number $k=g$, and
+$k\equiv(-1)^{(k-1)/2}\pmod 4$ holds for every odd $k$. So $\Kre(3)$, which
+does not exist \cite{GM,KO}, is not excluded by our congruences.
 
 \begin{proof}[Proof of Theorem~\ref{thm:headline}(b)]
 Let $\mathcal D$ be a $3$-$(v,K,t-1)$ design with $v=t(t^2+3t+1)$ and
@@ -692,122 +697,197 @@ $2$-$\bigl((\lambda+2)(\lambda^2+4\lambda+2),\lambda^2+3\lambda+1,\lambda\bigr)$
 designs, the second of Cameron's families \cite{Cameron}.
 
 \subsection{The second subconstituent}\label{sec:sub}
-Fix $t\ge2$ and put $v=t(t^2+3t+1)$ and $K=t(t+1)$, as in
+Fix $t\ge1$ and put $v=t(t^2+3t+1)$ and $K=t(t+1)$, as in
 Theorem~\ref{thm:headline}(b). In $\Kre(t)$ the non-neighbors of a vertex $x$
 induce a strongly regular graph with parameters
 \begin{equation}\label{eq:sub}
  (n,k,\lambda,\mu)=\bigl((t^2+2t-1)(t^2+3t+1),\ t^2(t+2),\ 0,\ t^2\bigr)
 \end{equation}
-\cite[\S8.5]{BvM}, and two such vertices $y,y'$ are adjacent if and only if
-the blocks $\Gamma(x)\cap\Gamma(y)$ and $\Gamma(x)\cap\Gamma(y')$ of the
-design in Theorem~\ref{thm:headline}(b) are disjoint (Figure~\ref{fig:kre4}).
-We show that the graph alone determines the design. For $t=2$, where
-\eqref{eq:sub} is $(77,16,0,4)$, this is classical \cite{Br77}.
+\cite[\S8.5]{BvM} (see also \cite{Biggs3}), and two such vertices $y,y'$ are
+adjacent if and only if the blocks $\Gamma(x)\cap\Gamma(y)$ and
+$\Gamma(x)\cap\Gamma(y')$ of the design in Theorem~\ref{thm:headline}(b) are
+disjoint (Figure~\ref{fig:kre4}). We show that the graph alone determines the
+design. For $t=1$, where \eqref{eq:sub} is the Petersen graph, this is
+trivial, and for $t=2$, where it is $(77,16,0,4)$, it is classical
+\cite{Br77}.
 
 \begin{theorem}\label{thm:sub}
 Every strongly regular graph with parameters \eqref{eq:sub} is the
 disjointness graph of the blocks of a $3$-$(v,K,t-1)$ design.
 \end{theorem}
 
-With Theorem~\ref{thm:headline}(b) this proves Theorem~\ref{thm:headline}(d);
-the complement $(667,570,489,475)$ of the case $t=4$ is excluded with it.
+\begin{corollary}\label{cor:equiv}
+For every $t\ge1$ the following are equivalent: \textup{(i)} a strongly
+regular graph with parameters \eqref{eq:sub} exists; \textup{(ii)} a
+$3$-$(v,K,t-1)$ design exists; \textup{(iii)} $\Kre(t)$ exists. In
+particular there is no $\mathrm{srg}(266,45,0,9)$, and none with parameters
+\eqref{eq:sub} for $t\equiv4\pmod 8$.
+\end{corollary}
 
-The proof uses the Norton algebra of an eigenspace. Let $\Sigma$ be any
-primitive strongly regular graph on $n$ vertices, let $P$ be the primitive
-idempotent of one of its nontrivial eigenspaces, of dimension $g$, let $U$ be
-the column space of $P$ with the standard inner product, and let $u_i=Pe_i$
-be the $i$-th column. Since $P\circ P$ lies in the Bose--Mesner algebra,
-$P(P\circ P)=\tau P$ for a scalar $\tau$, and $g\tau=\sum_{i,j}P_{ij}^3$. For
-$x,y\in U$ put $x*y=P(x\circ y)$. For $x\in U$ we have $\ip x{u_i}=x_i$, so
+\begin{proof}
+(i)$\Rightarrow$(ii) is Theorem~\ref{thm:sub}; (ii)$\Rightarrow$(iii) is the
+construction in the proof of Theorem~\ref{thm:headline}(b), which does not
+use $t\equiv4\pmod 8$; and (iii)$\Rightarrow$(i) holds because the second
+subconstituent of $\Kre(t)$ has parameters \eqref{eq:sub}. Now use that
+$\Kre(3)$ does not exist \cite{GM,KO}, and Theorem~\ref{thm:headline}(a).
+\end{proof}
+
+This proves Theorem~\ref{thm:headline}(d); the complement $(667,570,489,475)$
+of the case $t=4$ is excluded with it. Brouwer's table credits the
+nonexistence of $\mathrm{srg}(266,45,0,9)$ to Akiyama \cite{Akiyama}, whose
+formalized proof is a long lattice argument. The proof above is short, but it
+rests on the nonexistence of a $3$-$(57,12,2)$ design, that is, on the
+computer classification of the biplanes with $k=11$ \cite{KO}. Since the
+Witt design $3$-$(22,6,1)$ is unique, Theorem~\ref{thm:sub} also shows that
+the $\mathrm{srg}(77,16,0,4)$ is unique.
+
+The proof of Theorem~\ref{thm:sub} uses the Norton algebra of an eigenspace.
+Let $\Sigma$ be a primitive strongly regular graph on $n$ vertices, let $P$
+be the primitive idempotent of a nontrivial eigenspace, of dimension $g\ge2$,
+let $\mathcal U$ be the column space of $P$ with the standard inner product,
+and let $\varphi_i$ be the $i$-th column of $P$. Since $P\circ P$ lies in the
+Bose--Mesner algebra, $P(P\circ P)=\sigma P$ for a scalar $\sigma$, and
+$g\sigma=\sum_{i,j}P_{ij}^3$. For $x,y\in\mathcal U$ put $x*y=P(x\circ y)$.
+For $x\in\mathcal U$ we have $\ip x{\varphi_i}=x_i$, so
 \begin{equation}\label{eq:moments}
- \sum_iu_i=0,\qquad \sum_i\ip x{u_i}\ip y{u_i}=\ip xy,\qquad
- \sum_i\ip x{u_i}\ip y{u_i}\ip z{u_i}=\ip{x*y}z .
+ \sum_i\varphi_i=0,\qquad \sum_i\ip x{\varphi_i}\ip y{\varphi_i}=\ip xy,\qquad
+ \sum_i\ip x{\varphi_i}\ip y{\varphi_i}\ip z{\varphi_i}=\ip{x*y}z .
 \end{equation}
+We regard $4$-linear forms on $\mathcal U$ as tensors, with
+$\|\mathcal X\|^2=\sum\mathcal X(z_a,z_b,z_c,z_d)^2$ for an orthonormal basis
+$(z_a)$ of $\mathcal U$.
 
 \begin{lemma}\label{lem:norton}
-For $x,y,z,w\in U$ let $T(x,y,z,w)=\ip{x*y}{z*w}$, $T'(x,y,z,w)=T(x,z,y,w)$,
-$D=T-T'$ and $S(x,y,z,w)=\ip xz\ip yw-\ip xy\ip zw$, regarded as tensors on $U$.
-With $\kappa=\tau/(g-1)$ and
-$\Phi(P)=\sum_{i,j,k,l}P_{ij}P_{ik}P_{il}P_{jk}P_{jl}P_{kl}$,
+Let $\mathcal T(x,y,z,w)=\ip{x*y}{z*w}$,
+$\mathcal T'(x,y,z,w)=\mathcal T(x,z,y,w)$, $\mathcal D=\mathcal T-\mathcal T'$
+and
+$\mathcal S(x,y,z,w)=\ip xz\ip yw-\ip xy\ip zw$. Put $\kappa=\sigma/(g-1)$
+and $\Phi(P)=\sum_{i,j,k,l}P_{ij}P_{ik}P_{il}P_{jk}P_{jl}P_{kl}$. Then
 \[
- \tfrac12\|D-\kappa S\|^2=\frac{g(g-2)}{g-1}\,\tau^2-\Phi(P).
+ \tfrac12\|\mathcal D-\kappa\mathcal S\|^2=\frac{g(g-2)}{g-1}\,\sigma^2-\Phi(P).
 \]
 \end{lemma}
 
 \begin{proof}
-We have $T(x,y,z,w)=\sum_{i,j}x_iy_iP_{ij}z_jw_j$, and $\ip{u_i}{u_j}=P_{ij}$.
-Hence $\|T\|^2=\|T'\|^2=\sum P_{ij}P_{kl}P_{ik}^2P_{jl}^2
-=\operatorname{tr}\bigl((P(P\circ P))^2\bigr)=g\tau^2$ and
-$\ip T{T'}=\Phi(P)$. Let $(e_a)$ be an orthonormal basis of $U$. Then
-$\sum_ae_a\circ e_a$ is the diagonal of $P$, which is constant, so
-$\sum_ae_a*e_a=0$; and $\sum_{a,b}\|e_a*e_b\|^2=\sum_{i,j}P_{ij}^3=g\tau$. So
-$\ip TS=g\tau$, $\ip{T'}S=-g\tau$ and $\|S\|^2=2g(g-1)$, and expanding
-$\|T-T'-\kappa S\|^2$ gives the claim.
+We have $\mathcal T(x,y,z,w)=\sum_{i,j}x_iy_iP_{ij}z_jw_j$ and
+$\ip{\varphi_i}{\varphi_j}=P_{ij}$. Hence
+$\|\mathcal T\|^2=\|\mathcal T'\|^2=\sum P_{ij}P_{kl}P_{ik}^2P_{jl}^2
+=\operatorname{tr}\bigl((P(P\circ P))^2\bigr)=g\sigma^2$ and
+$\ip{\mathcal T}{\mathcal T'}=\Phi(P)$. The vector $\sum_az_a\circ z_a$ is the
+diagonal of $P$, which is constant, so $\sum_az_a*z_a=0$; and
+$\sum_{a,b}\|z_a*z_b\|^2=\sum_{i,j}P_{ij}^3=g\sigma$. So
+$\ip{\mathcal T}{\mathcal S}=g\sigma$, $\ip{\mathcal T'}{\mathcal S}=-g\sigma$
+and $\|\mathcal S\|^2=2g(g-1)$, and expanding
+$\|\mathcal T-\mathcal T'-\kappa\mathcal S\|^2$ gives the claim.
 \end{proof}
 
 \begin{lemma}\label{lem:simplex}
-If $D=\kappa S$ and $\tau>0$, then there are $c>0$ and a linear bijection from
-$U$ onto the hyperplane $\{x\in\mathbb R^{g+1}:\sum_px_p=0\}$ that multiplies
-inner products by $c^{-1}$ and carries $x*y$ to the orthogonal projection of
-the coordinatewise product $x\circ y$ onto the hyperplane.
+If $\mathcal D=\kappa\mathcal S$ and $\sigma>0$, there is a linear bijection
+$x\mapsto\hat x$ from $\mathcal U$ onto the hyperplane
+$H=\{y\in\mathbb R^{g+1}:\sum_\alpha y_\alpha=0\}$ such that
+$\ip xy=\hat x\cdot\hat y/((g+1)\kappa)$ and $\widehat{x*y}$ is the orthogonal
+projection of the coordinatewise product $\hat x\circ\hat y$ onto $H$.
 \end{lemma}
 
 \begin{proof}
-On $\mathcal A=U\oplus\mathbb R\epsilon$ define a commutative product with unit
-$\epsilon$ by $x\cdot y=x*y+\kappa\ip xy\epsilon$ for $x,y\in U$, and extend
-the inner product by $\epsilon\perp U$, $\ip\epsilon\epsilon=1/\kappa>0$.
-Then $\ip{x\cdot y}{z\cdot w}=T(x,y,z,w)+\kappa\ip xy\ip zw$, and $D=\kappa S$
-says exactly that this is unchanged when $y$ and $z$ are exchanged; with the
-evident symmetries it is symmetric in $x,y,z,w$. By \eqref{eq:moments}
-$\ip{x\cdot y}z=\ip{x*y}z$ is symmetric too, so $\ip{a\cdot b}{c\cdot d}$ is
-symmetric for all $a,b,c,d\in\mathcal A$. Hence the form is invariant,
+On $\mathcal A=\mathcal U\oplus\mathbb R\epsilon$ define a commutative product
+with unit $\epsilon$ by $x\cdot y=x*y+\kappa\ip xy\epsilon$ for
+$x,y\in\mathcal U$, and extend the inner product by $\epsilon\perp\mathcal U$
+and $\ip\epsilon\epsilon=1/\kappa>0$. For $x,y,z,w\in\mathcal U$,
+$\ip{x\cdot y}{z\cdot w}=\mathcal T(x,y,z,w)+\kappa\ip xy\ip zw$; besides the
+evident symmetries, $\mathcal D=\kappa\mathcal S$ says that this is unchanged
+when $y$ and $z$ are exchanged, so it is symmetric in $x,y,z,w$. When $\epsilon$
+occurs the products reduce to lower moments: $\ip{\epsilon\cdot y}{z\cdot w}
+=\ip{y}{z*w}=\sum_iy_iz_iw_i$ by \eqref{eq:moments}, and
+$\ip{\epsilon\cdot\epsilon}{z\cdot w}=\ip zw=\ip{\epsilon\cdot z}{\epsilon\cdot w}$.
+Hence $\ip{a\cdot b}{c\cdot d}$ is symmetric for all $a,b,c,d\in\mathcal A$.
+Taking $d=\epsilon$ shows that the form is invariant,
 $\ip{a\cdot b}c=\ip a{b\cdot c}$, and $\mathcal A$ is associative:
 $\ip{(a\cdot b)\cdot c}d=\ip{a\cdot b}{c\cdot d}=\ip{a\cdot d}{b\cdot c}
-=\ip{a\cdot(b\cdot c)}d$. The multiplication operators are self-adjoint and
-commute, so $\mathcal A\cong\mathbb R^{g+1}$ with the coordinatewise product,
-and invariance makes the primitive idempotents $\epsilon_p$ orthogonal. For
-$x\in U$ the trace of $y\mapsto x\cdot y$ is
-$\sum_a\ip x{e_a*e_a}+\kappa\ip x\epsilon=0$, so $U$ is the hyperplane
-$\sum_px_p=0$; since $\epsilon=\sum_p\epsilon_p$ is orthogonal to it, all
-$\ip{\epsilon_p}{\epsilon_p}$ are equal, say to $c$. Finally, for $x,y\in U$,
-$x*y=x\cdot y-\kappa\ip xy\epsilon$ differs from $x\circ y$ by a multiple of
+=\ip{a\cdot(b\cdot c)}d$.
+
+So the multiplication operators $L_a$ are self-adjoint and commute, and
+$a\mapsto L_a$ is injective because $L_a\epsilon=a$. In a common orthonormal
+eigenbasis the $L_a$ form a $(g+1)$-dimensional algebra of diagonal matrices
+containing $I$, that is, all diagonal matrices. Hence $\mathcal A\cong\mathbb
+R^{g+1}$ with the coordinatewise product, $\epsilon$ corresponding to
+$(1,\dots,1)$; let $\epsilon_\alpha$ be the primitive idempotents. By
+invariance,
+$\ip{\epsilon_\alpha}{\epsilon_\beta}=\ip{\epsilon_\alpha\cdot\epsilon_\alpha}{\epsilon_\beta}
+=\ip{\epsilon_\alpha}{\epsilon_\alpha\cdot\epsilon_\beta}=0$ for
+$\alpha\ne\beta$. For $x\in\mathcal U$ the trace of $y\mapsto x\cdot y$ is
+$\sum_a\ip x{z_a*z_a}+\kappa\ip x\epsilon=0$, so $\mathcal U$ corresponds to
+$H$. As $\epsilon\perp\mathcal U$, all $\ip{\epsilon_\alpha}{\epsilon_\alpha}$
+are equal, to $c$ say, and $(g+1)c=\ip\epsilon\epsilon=1/\kappa$. Finally,
+$x*y=x\cdot y-\kappa\ip xy\epsilon$ differs from $x\cdot y$ by a multiple of
 $(1,\dots,1)$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:sub}]
-Let $\Sigma$ have parameters \eqref{eq:sub} and let $\ell=n-k-1$. Its
+Let $\Sigma$ have parameters \eqref{eq:sub} and put $\bar k=n-k-1$. Its
 eigenvalues are $t$ and $-K$, and $-K$ has multiplicity $g=v-1$. Let $P$ be
 the corresponding idempotent and $G=(n/g)P$, which has $1$ on the diagonal,
 $\omega_1=-(t+1)/(t(t+2))$ on edges and $\omega_0=1/((t+1)(t+2))$ on
-non-edges. Then $M=\sum_jG_{ij}^3=1+k\omega_1^3+\ell\omega_0^3$ equals
-$(t^2+t-1)(t^2+3t+1)/(t(t+1)^2(t+2)^2)$, and $\tau=(g/n)^2M>0$.
-
-\emph{Step 1: $D=\kappa S$.} Expand each of the six factors of $\Phi(G)$ as
-$G_{ij}=(1-\omega_0)\delta_{ij}+(\omega_1-\omega_0)A_{ij}+\omega_0$. Each term is a
-weighted number of homomorphisms into $\Sigma$ of a graph on at most four
-vertices. Since $\Sigma$ is triangle-free, only forests, with $n^ck^e$
-homomorphisms ($c$ components, $e$ edges), and the $4$-cycle, with
-$n(k^2+\ell\mu^2)$, contribute. The result is a polynomial identity in $t$,
-which we checked by computer algebra (and the expansion itself by brute force
-on the Petersen, Clebsch, Gewirtz, $M_{22}$ and Higman--Sims graphs):
+non-edges. Then
 \[
- \Phi(G)=\frac{n^2(g-2)}{g(g-1)}\,M^2 .
+ \Theta=\sum_jG_{ij}^3=1+k\omega_1^3+\bar k\omega_0^3
+ =\frac{(t^2+t-1)(t^2+3t+1)}{t(t+1)^2(t+2)^2},
 \]
-Since $P=(g/n)G$, this says $\Phi(P)=g(g-2)\tau^2/(g-1)$, and
-Lemma~\ref{lem:norton} gives $D=\kappa S$.
+and $\sigma=(g/n)^2\Theta>0$.
 
-\emph{Step 2: blocks.} Identify $U$ with the hyperplane in $\mathbb R^v$ as in
-Lemma~\ref{lem:simplex}. From $u_i*u_i=P(P\circ P)e_i=\tau u_i$ and
-$\|u_i\|^2=P_{ii}=g/n$, every coordinate $z$ of $u_i$ satisfies
-$z^2=\tau z+\kappa g/n$. The roots of this quadratic are $\rho(v-K)$ and
-$-\rho K$ with $\rho=\tau/(v-2K)>0$ (their sum is $\tau$, and their product
-$-\rho^2K(v-K)$ equals $-\kappa g/n$, again an identity in $t$). The
-coordinates of $u_i$ sum to $0$, so if $B_i$ is the set of coordinates where
-$u_i$ equals $\rho(v-K)$, then $\rho v(|B_i|-K)=0$, hence $|B_i|=K$ and
-$u_i=\rho(v\chi_i-K\mathbf 1)$, with $\chi_i$ the characteristic vector of
-$B_i$. Then
-$P_{ij}=\ip{u_i}{u_j}=c\rho^2v\bigl(v|B_i\cap B_j|-K^2\bigr)$, and comparing
-with $i=j$ gives
+\emph{Step 1: $\mathcal D=\kappa\mathcal S$.} Write
+$\Phi(G)=\sum_{i,j}G_{ij}Q_{ij}$, where $Q_{ij}=x^\top Gx$ for
+$x=G_i\circ G_j$ ($G_i$ the $i$-th column), so that
+\[
+ Q_{ij}=(1-\omega_0)\sum_lx_l^2+2(\omega_1-\omega_0)\sum_{\{l,l'\}\in E}x_lx_{l'}
+ +\omega_0\Bigl(\sum_lx_l\Bigr)^2 .
+\]
+The entry $x_l$ depends only on the position of $l$ relative to $i$ and $j$,
+and since $\Sigma$ is triangle-free the cells and the numbers of edges
+between them are determined by $(n,k,\mu)$. For nonadjacent $i\ne j$ the cells
+are $\{i\}$ and $\{j\}$ ($x_l=\omega_0$), $C=\Gamma(i)\cap\Gamma(j)$ ($\mu$
+vertices, $\omega_1^2$), $\Gamma(i)\setminus C$ and $\Gamma(j)\setminus C$
+($k-\mu$ each, $\omega_1\omega_0$) and the remaining $n-2-2k+\mu$ vertices
+($\omega_0^2$). Besides the edges at $i$ and $j$, there are $\mu(k-\mu)$ edges
+between $\Gamma(i)\setminus C$ and $\Gamma(j)\setminus C$, $\mu(k-2)$ between
+$C$ and the rest, $(k-\mu)(k-\mu-1)$ between each $\Gamma(\cdot)\setminus C$
+and the rest, and the remaining edges inside the rest. For adjacent $i,j$ the
+cells are $\{i\},\{j\}$, $\Gamma(i)\setminus\{j\}$, $\Gamma(j)\setminus\{i\}$
+and the rest, with $(k-1)(\mu-1)$ edges between the middle two cells and
+$(k-1)(k-\mu)$ between each of them and the rest; for $i=j$ they are $\{i\}$,
+$\Gamma(i)$ and the rest. This gives $Q_{ii}=\Theta^2$,
+and, for $i\sim j$ and for nonadjacent $i\ne j$ respectively,
+\[
+ Q_{\sim}=\frac{2(t^2+t-1)(t^2+3t+1)^2}{t^3(t+1)^2(t+2)^5},\qquad
+ Q_{\not\sim}=\frac{(t^2+3t+1)^2(t^5+7t^4+15t^3+11t^2+t+1)}{t^2(t+1)^5(t+2)^5},
+\]
+and
+\begin{align*}
+ \Phi(G)&=n\bigl(Q_{ii}+k\omega_1Q_{\sim}+\bar k\omega_0Q_{\not\sim}\bigr)\\
+ &=\frac{(t^2+t-1)(t^2+2t-1)(t^2+3t+1)^4(t^3+3t^2+t-3)}{t^2(t+1)^5(t+2)^5}
+ =\frac{n^2(g-2)}{g(g-1)}\,\Theta^2 .
+\end{align*}
+(We also checked these identities by computer algebra, and the cell
+expansion against a direct evaluation of $\Phi$ on the Petersen, Clebsch,
+Gewirtz, $M_{22}$ and Higman--Sims graphs.) Since $P=(g/n)G$, this says
+$\Phi(P)=g(g-2)\sigma^2/(g-1)$, and Lemma~\ref{lem:norton} gives
+$\mathcal D=\kappa\mathcal S$.
+
+\emph{Step 2: blocks.} Identify $\mathcal U$ with $H\subset\mathbb R^v$ as in
+Lemma~\ref{lem:simplex} (here $g+1=v$), so that $\ip xy=x\cdot y/(v\kappa)$.
+Since $\varphi_i*\varphi_i$ is the $i$-th column of $P(P\circ P)=\sigma P$,
+the lemma gives $\varphi_i\circ\varphi_i=\sigma\varphi_i+c_i\mathbf 1$ for a
+constant $c_i$, and summing coordinates gives
+$vc_i=\varphi_i\cdot\varphi_i=v\kappa P_{ii}=v\kappa g/n$. So every
+coordinate $\zeta$ of $\varphi_i$ satisfies $\zeta^2=\sigma\zeta+\kappa g/n$.
+The roots of this quadratic are $\rho(v-K)$ and $-\rho K$ with
+$\rho=\sigma/(v-2K)>0$: their sum is $\sigma$, and their product
+$-\rho^2K(v-K)$ equals $-\kappa g/n$ (an identity in $t$). Let $B_i$ be the
+set of coordinates where $\varphi_i$ equals $\rho(v-K)$, and $\chi_i$ its
+characteristic vector. As the coordinates of $\varphi_i$ sum to $0$,
+$\rho v(|B_i|-K)=0$, so $|B_i|=K$ and $\varphi_i=\rho(v\chi_i-K\mathbf 1)$.
+Then $P_{ij}=\ip{\varphi_i}{\varphi_j}=\rho^2\bigl(v|B_i\cap B_j|-K^2\bigr)/\kappa$,
+and comparing with $i=j$ gives
 \[
  |B_i\cap B_j|=\frac{K^2+\omega K(v-K)}v,\qquad \omega=\frac{P_{ij}}{P_{ii}}
  \in\{\omega_1,\omega_0\},
@@ -815,15 +895,17 @@ with $i=j$ gives
 which is $0$ for adjacent and $t$ for nonadjacent $i,j$. So the $B_i$ are
 distinct and $\Sigma$ is their disjointness graph.
 
-\emph{Step 3: the design.} For $x\in U$ the coordinate $x_p$ is
-$c^{-1}\ip x{\pi_p}$, where $\pi_p\in U$ is the projection of the $p$-th unit
-vector, and the vectors $\pi_p$ are permuted by permutations of the
-coordinates. By \eqref{eq:moments} and Lemma~\ref{lem:simplex}, the sums
-$\sum_iu_i$, $\sum_iu_i(p)u_i(q)$ and $\sum_iu_i(p)u_i(q)u_i(r)$ are therefore
-invariant under all permutations of the $v$ coordinates (the last equals
-$c^{-2}\sum_s\pi_p(s)\pi_q(s)\pi_r(s)$). Since
-$\chi_i=(u_i/\rho+K\mathbf 1)/v$, the number of blocks containing any set of
-at most three points depends only on its size. There are
+\emph{Step 3: the design.} For $x\in\mathcal U$ and a point $\alpha$, the
+coordinate $x_\alpha$ equals $v\kappa\ip x{\pi_\alpha}$, where
+$\pi_\alpha\in\mathcal U$ corresponds to the projection of the $\alpha$-th unit
+vector onto $H$; permutations of the points permute the $\pi_\alpha$. By
+\eqref{eq:moments} and Lemma~\ref{lem:simplex}, $\sum_i\varphi_i=0$, and
+$\sum_i\varphi_i(\alpha)\varphi_i(\beta)$ and
+$\sum_i\varphi_i(\alpha)\varphi_i(\beta)\varphi_i(\gamma)
+=(v\kappa)^2\sum_\delta\pi_\alpha(\delta)\pi_\beta(\delta)\pi_\gamma(\delta)$
+are invariant under all permutations of the $v$ points. Since
+$\chi_i=(\varphi_i/\rho+K\mathbf 1)/v$, the number of blocks containing any
+set of at most three points depends only on its size. There are
 $n=v(v-1)/K$ blocks, and counting gives $t-1$ blocks through three points.
 \end{proof}
 
@@ -833,7 +915,7 @@ Let $t$ be a positive integer. There is no strongly regular graph
 with parameters
 \begin{enumerate}[label=\textup{(\roman*)}]
 \item $\bigl(\tfrac12t^2(t+3)^2,\ t(t^2+3t+1)-1,\ t(t+1)-2,\ 2t(t+1)\bigr)$, if
-$t\equiv2\pmod 4$ or $t\equiv4\pmod8$, and every odd prime divisor of $t$ is
+$t\equiv2\pmod 4$ or $t\equiv4\pmod8$, and in either case every odd prime divisor of $t$ is
 $\equiv1\pmod 4$;
 \item $\bigl(\tfrac{27}{2}t^2(t+1),\ \tfrac12t(3t+1)(3t+2),\
 \tfrac12t^2(3t-1),\ \tfrac12t(t+1)(3t+2)\bigr)$, if $t\equiv4\pmod8$ and every
@@ -908,7 +990,17 @@ For $(2420,885,260,360)$: $r=5$, $s=-105$, $u=4/11$, $br+a=59$ (odd), $F=1210$
 $\Delta\equiv1+58\cdot2\equiv1$, but $\Delta\equiv11^{119}\equiv3$. For
 $(421685,76704,12478,14280)$, part (b) applies: $r=34$, $s=-1836$, $u=2/11$,
 $br+a=376$ (even), $F=20570$, $g=7708$ and $L=2\cdot5\cdot17$; it requires
-$\Delta\equiv1+g\equiv1$, but $\Delta\equiv11^{7709}\equiv3$. The other two are in Table~\ref{tab:scan}.
+$\Delta\equiv1+g\equiv1$, but $\Delta\equiv11^{7709}\equiv3$. The other two
+are excluded by part (a), with $L=290$ and $884$ having no prime divisor
+$\equiv3\pmod4$:
+\begin{center}\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{rccccccc}\toprule
+$n$&$u$&$br+a$&$F$&$n/F$&$g$&$1+(br+a-1)\frac nF$&$\Delta\equiv b^{g+1}$\\\midrule
+$2018980$&$28/59$&$1739$&$1009490$&$2$&$3478$&$\equiv1$&$59^{3479}\equiv3$\\
+$4244696$&$10/23$&$1183$&$467636$&$118/13$&$10738$&$\equiv1$&$23^{10739}\equiv3$\\
+\bottomrule
+\end{tabular}
+\end{center}
 \end{proof}
 
 The row $(2420,885,260,360)$ is mentioned in a talk by Makhnev and Paduchikh
@@ -1011,7 +1103,8 @@ no Proposition~\ref{prop:second} exclusion.
 \end{example}
 
 The conclusion ``$g$ is odd'' is a necessary condition, but it never fails
-among the Smith parameter sets with $r\le135$. The congruence does fail:
+among the Smith parameter sets with $r\le135$ where Theorem~\ref{thm:vertex}
+applies. The congruence does fail:
 Theorem~\ref{thm:vertex} excludes twelve of these sets, all passing the
 feasibility checks. Seven have $n\le10^7$ and are in Table~\ref{tab:scan};
 the others have $n=17744636$, $30090112$, $45139132$, $65157120$ and
@@ -1125,9 +1218,9 @@ triangle-free parameters \cite[Table~2]{Biggs}; Kova\v l's software
 \cite{Koval} also excludes it.
 
 \begin{corollary}\label{cor:biggs}
-Let $q\ge5$, $q\equiv5\pmod 8$, have only prime divisors $\equiv1\pmod4$.
-There is no triangle-free strongly regular graph with $k=q^2+1$, $\mu=2$, nor
-one with $k=q^2$, $\mu=4$. If moreover $q\equiv13\pmod{24}$, there is also none
+Let $q\ge5$ have only prime divisors $\equiv1\pmod4$. If $q\equiv5\pmod 8$,
+there is no triangle-free strongly regular graph with $k=q^2+1$, $\mu=2$, nor
+one with $k=q^2$, $\mu=4$. If $q\equiv13$ or $17\pmod{24}$, there is none
 with $k=q^2-3$, $\mu=6$.
 \end{corollary}
 
@@ -1237,32 +1330,36 @@ complement); we have not found earlier nonexistence proofs,
 but our literature search was targeted rather than systematic.
 
 The array $\{415,390,16;1,39,400\}$, which is not in the files we scanned, is
-excluded by
-Theorem~\ref{thm:fixed}: its distance-$3$ graph would have spectrum
-$166^1$, $10^{2905}$, $(-16)^{1826}$, so it would be an
-$\mathrm{srg}(4732,166,0,6)$.
+excluded by Theorem~\ref{thm:fixed}: its distance-$3$ graph would have
+spectrum $166^1$, $10^{2905}$, $(-16)^{1826}$, so it would be an
+$\mathrm{srg}(4732,166,0,6)$. (It also fails Theorem~\ref{thm:frame} directly,
+at $\theta=-40$: $(\gamma_i)=(830,-80,11,-80)$, $m=664$, $F=5915$, $c=91$ and
+$\nu=65$, so $\Delta\equiv91^{665}\equiv3$ and $m+1-\Delta\equiv2$.)
 
 More generally, any sum of primitive idempotents with rational entries, such as
 the sum over a Galois orbit \cite{LM}, is a projector, and after scaling it
 gives an integral tight frame. Across the $5475$ arrays we tested all $720522$
 nonempty proper rational projector sums and obtained nine additional
-exclusions (Table~\ref{tab:galois}). In each case a fusion, halving or folding
-produces a strongly regular graph already excluded above or by Kova\v l \cite{Koval}.
+exclusions, on $300$, $352$, $784$ (two arrays), $1500$, $12675$, $13872$,
+$14196$ and $14536$ vertices (listed in the repository). In each case a
+fusion, halving or folding produces a strongly regular graph already excluded
+above or by Kova\v l \cite{Koval}.
 
 %======================================================================
 \section{Computations and checks}\label{sec:checks}
 
 Scripts, data, the table snapshot and checksums of the BCN files, together
 with instructions for reproducing every count below, are available at
-\emph{[repository link]}.
+\begin{center}\url{https://github.com/dylan-plummer/srg-krein-equality-nonexistence}.\end{center}
 
 \paragraph{The Smith census.}
 By Lemma~\ref{lem:param}(ii) the Smith parameter sets with $r\le135$, all with
 integral eigenvalues, can be listed by running over the divisors $h$ of
 $4r^3(r+1)^3(r-1)$; there are $2320$ (Figure~\ref{fig:reach}).
 Theorem~\ref{thm:main} excludes $68$ and is satisfied by $132$. Here, for the
-$68$ members of $\Kre(t)$ whose $L=t$ has a prime divisor $\equiv3\pmod4$, we
-compute $\Delta$ from the neighbor basis as in the proof of
+$68$ members of $\Kre(t)$ in the range of Theorem~\ref{thm:main} whose $L=t$
+has a prime divisor $\equiv3\pmod4$ ($91$ members have such a prime in all),
+we compute $\Delta$ from the neighbor basis as in the proof of
 Theorem~\ref{thm:headline}(a); $11$ of them are excluded. For the other $986$
 sets with such a prime, $\Delta$ is not determined, and for $1134$, $v_2(F)$ is
 too large.
@@ -1310,16 +1407,11 @@ program: the Pell sequence through twelve qualifying members, and
 Theorem~\ref{thm:fixed} and Corollary~\ref{cor:biggs} for all $q<3000$.
 
 \paragraph{Controls.}
-For the Higman--Sims graph and the collinearity graph of $Q^-(5,5)$, we
-computed a maximal $2$-integral lattice containing the vectors of $bH$. It is
-unimodular, and $w^2$, $n/F$ and $g+1-\Delta$ agree ($\equiv2$ and $\equiv1$
-respectively); for $Q^-(5,5)$, $v_2(\det)$ drops from $104$ to $0$. For
-$Q^-(5,3)$ and $Q^-(5,5)$, the projected lattices of Theorem~\ref{thm:vertex}
-have ranks $20$ and $104$, square class $1$, and frame constants $(3,9)$ and
-$(5,25)$. Theorem~\ref{thm:frame} holds on all $769$ rational eigenspaces of
-$223$ intersection arrays of known distance-regular graphs: the Hamming,
-Johnson, Grassmann, dual polar, bilinear forms, halved cube, generalized
-hexagon and generalized octagon families, and ten sporadic graphs.
+The repository also contains controls on known graphs: maximal $2$-integral
+lattices for the Higman--Sims graph and $Q^-(5,5)$, which are unimodular and
+satisfy Lemma~\ref{lem:charnorm} as predicted, and Theorem~\ref{thm:frame} on
+all $769$ rational eigenspaces of $223$ intersection arrays of known
+distance-regular graphs.
 
 \section*{Acknowledgments}
 We thank Anton Kova\v l for his discriminant-form census and software, which we
@@ -1327,10 +1419,11 @@ used to cross-check the table rows and several parameter sets in
 \S\ref{sec:second}.
 
 %======================================================================
+\FloatBarrier
 \appendix
 \section{Tables}\label{app:tables}
 
-\begin{table}[H]\footnotesize\centering
+\begin{table}[htbp]\footnotesize\centering
 \caption{The $42$ Smith parameter sets with $n\le10^7$ excluded by
 Theorem~\ref{thm:main} (parts (a), (b)) or Theorem~\ref{thm:vertex}. Rows
 marked 1.2(a) are members of $\Kre(t)$ whose $L=t$ has a prime divisor
@@ -1345,7 +1438,7 @@ Corollary~\ref{cor:series}.}\label{tab:scan}
 \begin{tabular}{rrrrrrrlcl}\toprule
 $n$&$k$&$\lambda$&$\mu$&$r$&$u$&$g$&test&2nd&family\\\midrule
 50&21&4&12&1&2/5&7&1.1(a)&P&(i) $t{=}2$, inf.\\
-121&56&15&35&1&5/11&8&1.1(b)&S&inf.\\
+121&56&15&35&1&5/11&8&1.1(b)&--&inf.\\
 392&115&18&40&3&2/7&46&1.1(a)&--&(i) $t{=}4$\\
 784&116&0&20&4&1/7&116&1.1(a)&--&$\Kre(4)$\\
 1080&364&88&140&4&1/3&78&1.1(a)&--&(ii) $t{=}4$\\
@@ -1390,7 +1483,7 @@ $n$&$k$&$\lambda$&$\mu$&$r$&$u$&$g$&test&2nd&family\\\midrule
 \end{tabular}
 \end{table}
 
-\begin{table}[H]\scriptsize\centering
+\begin{table}[htbp]\scriptsize\centering
 \caption{Intersection arrays in the BCN tables \cite{DRGtab} with an eigenspace
 failing Theorem~\ref{thm:frame}. Where two eigenvalues are listed, $(\gamma_i)$ and
 ``cubic'' ($\sum k_i\gamma_i^3=0$) refer to the first. The last column names a
@@ -1418,30 +1511,12 @@ $n$&array&$\theta$&$m$&$F$&$(\gamma_i)$&cubic&derived graph\\\midrule
 \end{tabular}
 \end{table}
 
-\begin{table}[H]\footnotesize\centering
-\caption{The nine further BCN arrays with a rational projector sum failing
-Theorem~\ref{thm:frame}, and the excluded strongly regular graph that each
-would produce.}\label{tab:galois}
-\begin{tabular}{rll}\toprule
-$n$&array&would give\\\midrule
-300&$\{39,30,4;1,5,36\}$&$(300,26,4,2)$, excluded by Kova\v l \cite{Koval}\\
-352&$\{25,24,2,1;1,2,24,25\}$&$(352,26,0,2)$, Corollary~\ref{cor:biggs}\\
-784&$\{70,69,56,10;1,14,60,70\}$&$\Kre(4)$\\
-784&$\{115,96,20,1;1,20,96,115\}$&$\Kre(4)$\\
-1500&$\{15,14,14,11;1,1,4,15\}$&halved: $(750,210,55,60)$, excluded by Kova\v l \cite{Koval}\\
-12675&$\{594,550,60,1;1,30,550,594\}$&folded: $(4225,594,43,90)$,
-Proposition~\ref{prop:second}\\
-13872&$\{285,280,6,1;1,6,280,285\}$&folded: $(6936,285,4,12)$,
-Theorem~\ref{thm:fixed}\\
-14196&$\{165,160,10,1;1,2,160,165\}$&distances $1\cup4$: $(14196,170,4,2)$,
-Theorem~\ref{thm:fixed}\\
-14536&$\{169,168,2,1;1,2,168,169\}$&folded: $(7268,169,0,4)$,
-Corollary~\ref{cor:biggs}\\
-\bottomrule
-\end{tabular}
-\end{table}
+\FloatBarrier
 
 \begin{thebibliography}{99}
+\bibitem{Akiyama} K.~Akiyama, Nonexistence of a strongly regular graph with
+parameters $(266,45,0,9)$: a certificate-free Lean proof, arXiv:2609.08319
+(2026).
 \bibitem{BMV} E.~Bannai, A.~Munemasa and B.~Venkov, The nonexistence of
 certain tight spherical designs, \emph{Algebra i Analiz} 16(4) (2004) 1--23;
 English translation: \emph{St.\ Petersburg Math.\ J.} 16 (2005) 609--625.
@@ -1449,6 +1524,11 @@ English translation: \emph{St.\ Petersburg Math.\ J.} 16 (2005) 609--625.
 arXiv:0911.2160 (2009).
 \bibitem{Biggs2} N.~Biggs, Families of parameters for SRNT graphs,
 arXiv:0911.2455 (2009).
+\bibitem{Biggs3} N.~Biggs, The second subconstituent of some strongly regular
+graphs, arXiv:1003.0175 (2010).
+\bibitem{BPR} A.~V. Bondarenko, A.~Prymak and D.~Radchenko, Non-existence of
+$(76,30,8,14)$ strongly regular graph, \emph{Linear Algebra Appl.} 527 (2017)
+53--72.
 \bibitem{Br77} A.~E. Brouwer, The uniqueness of the strongly regular graph on
 $77$ points, \emph{J.\ Graph Theory} 7 (1983) 455--461.
 \bibitem{BCN} A.~E. Brouwer, A.~M. Cohen and A.~Neumaier,

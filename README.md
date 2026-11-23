@@ -37,8 +37,9 @@ Writes one row per Smith parameter set with r <= 135 (2320 rows) and prints the 
 | realized rows (table snapshot) / excluded / failing the checks | 8 / 0 / 0 |
 | tight 4-design sets / excluded | 135 / 0 |
 
-For the 68 members of Kre(t) whose L = t has a prime divisor ≡ 3 (mod 4), Delta is computed from the
-neighbor basis, as in the proof of Theorem 1.2(a); 11 of them are excluded.
+For the 68 members of Kre(t) in the range of Theorem 1.1 whose L = t has a prime divisor ≡ 3 (mod 4)
+(91 members have such a prime in all), Delta is computed from the neighbor basis, as in the proof of
+Theorem 1.2(a); 11 of them are excluded.
 
 `feasible` is parent feasibility (integrality, Krein conditions, absolute bound). `checks` is the
 predicate used in the paper ("passes the feasibility checks"): `feasible`, integral forced local gaps
@@ -65,11 +66,12 @@ Theorem 1.2(d) adds the two open rows on 667 vertices.
 
     python -B second_subconstituent.py   # about 1 minute
 
-Checks the homomorphism expansion of the sum Phi against brute force on five triangle-free strongly
-regular graphs, the identities of the proof of Theorem 5.1 in Q(t), and, for t = 2, recovers the
-3-(22,6,1) design from a shuffled srg(77,16,0,4) through the Norton algebra.
+Evaluates the sum Phi in two independent ways, by the cell partition of Theorem 5.1 (Step 1) and by
+homomorphism counts, checks both against brute force on five triangle-free strongly regular graphs,
+verifies the identities of the proof of Theorem 5.1 in Q(t), and, for t = 2, recovers the 3-(22,6,1)
+design from a shuffled srg(77,16,0,4) through the Norton algebra.
 
-## Distance-regular graphs (Section 8, Tables 2 and 3)
+## Distance-regular graphs (Section 8, Table 2)
 
 The machine-readable BCN tables (files IA3P, IA4a, IA5a, IA6b, ..., IA17b) are available from Brouwer's
 pages, <https://www.win.tue.nl/~aeb/drg/>. They are not redistributed here; put them in a directory
@@ -80,6 +82,7 @@ pages, <https://www.win.tue.nl/~aeb/drg/>. They are not redistributed here; put 
       # arrays 5475, failing eigenspaces 23, failing arrays 13
     python -B audit_projector_sums.py BCN_DIR
       # 720282 single-residual sums + 240 split sums = 720522; 0 additional failing sums
+      # the nine projector-sum exclusions are listed in data/galois_projector_exclusions.md
 
 `frame_check.py` is an independent implementation of Theorem 3.1 and Lemma 3.2; `distance_arrays.py`
 and `frame_test.py` are the original implementation used by the projector-sum audit. Control inventory
@@ -90,6 +93,8 @@ Derived graphs in Table 2: for bipartite arrays the halved graph is (A^2 - kI)/c
 complement at 1014 / 5046 / 11774 is (507,44,1,4) / (2523,182,1,14) / (5887,216,5,8), each also failing
 Prop. 4.4. At 750, A_1 + A_3 is (750,210,55,60). At 616 a fusion gives (616,165,44,44), which is open;
 Prop. 4.4 does not apply to it or its complement.
+Subconstituent "parameter sets" with negative lambda or mu (e.g. (56,15,-2,6) for n = 121) are not
+tested in the `S2S` column.
 
 ## Families (Section 7)
 
