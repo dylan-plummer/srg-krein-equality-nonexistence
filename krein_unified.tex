@@ -31,7 +31,7 @@
 
 \title{Characteristic vectors and strongly regular graphs\\ at Krein equality}
 \author{Dylan Plummer}
-\date{}
+\date{23 November 2026}
 
 \begin{document}
 \maketitle
@@ -229,29 +229,50 @@ satisfy $196w^2\equiv784\pmod{16}$, so $w^2\equiv0\pmod 4$.
 $w^2\equiv g+1-3=114\equiv2\pmod 4$. This is a contradiction.
 \end{itemize}
 
-\begin{figure}[b]
+\begin{figure}[ht]
 \centering
-\begin{tikzpicture}[
-  cell/.style={draw=black!60, rounded corners=3pt, align=center, font=\small,
-    inner sep=5pt},
-  lab/.style={font=\footnotesize}]
-\node[cell, minimum width=1.0cm, minimum height=1.4cm] (x) {$x$};
-\node[cell, right=1.5cm of x, minimum height=2.2cm] (N)
-  {$\Gamma(x)$: $116$ vertices\\[2pt] independent ($\lambda=0$)\\[2pt]
-   Gram matrix $28I+J$};
-\node[cell, right=1.5cm of N, minimum height=2.2cm] (B)
-  {$667$ vertices $y\notin\{x\}\cup\Gamma(x)$\\[2pt]
-   block $\Gamma(x)\cap\Gamma(y)$, size $20$\\[2pt]
-   $y\sim y'$ iff disjoint blocks\\ (degree $96$)};
-\draw[thick] (x) -- node[lab, pos=0.18, above]{$116$} node[lab, pos=0.82, above]{$1$} (N);
-\draw[thick] (N) -- node[lab, pos=0.18, above]{$115$} node[lab, pos=0.82, above]{$20$} (B);
+\begin{tikzpicture}[x=0.4cm,y=0.4cm,
+  dot/.style={circle,fill=black,inner sep=0pt,minimum size=2.4pt},
+  vtx/.style={circle,fill=black,inner sep=0pt,minimum size=4.5pt},
+  lab/.style={font=\footnotesize},
+  blk/.style={rounded corners=2.5pt,inner sep=0pt}]
+  % the 116 neighbors of x, drawn as 28 dots
+  \draw[black!45,rounded corners=4pt] (-0.7,-0.8) rectangle (27.7,0.8);
+  \foreach \i in {0,...,27} \node[dot] (n\i) at (\i,0) {};
+  % three blocks B_y, B_{y''}, B_{y'}
+  \fill[blue!55,opacity=.30,blk] (0.55,-0.55) rectangle (6.45,0.55);
+  \fill[green!55!black,opacity=.30,blk] (5.55,-0.45) rectangle (11.45,0.45);
+  \fill[red!65,opacity=.30,blk] (17.55,-0.55) rectangle (23.45,0.55);
+  % x above, joined to every neighbor
+  \node[vtx,label={[lab]above:$x$}] (x) at (13.5,4.2) {};
+  \fill[black!8] (x.center) -- (-0.3,0.85) -- (27.3,0.85) -- cycle;
+  \node[vtx] at (x) {};
+  % three vertices at distance 2, each joined to its block of 20
+  \node[vtx,label={[lab]left:$y$}] (y) at (3.5,-4.6) {};
+  \node[vtx,label={[lab]above right:$y''$}] (yy) at (8.5,-4.6) {};
+  \node[vtx,label={[lab]right:$y'$}] (y1) at (20.5,-4.6) {};
+  \fill[blue!55,opacity=.18] (y.center) -- (0.6,-0.85) -- (6.4,-0.85) -- cycle;
+  \fill[green!55!black,opacity=.18] (yy.center) -- (5.6,-0.85) -- (11.4,-0.85) -- cycle;
+  \fill[red!65,opacity=.18] (y1.center) -- (17.6,-0.85) -- (23.4,-0.85) -- cycle;
+  \draw[thick] (yy) -- (y1);
+  \draw[thick] (y) to[bend right=22] (y1);
+  \draw[densely dashed] (y) -- (yy);
+  % labels
+  \node[lab,anchor=west] at (28.1,0) {$\Gamma(x)$, $116$};
+  \node[lab,anchor=west] at (28.1,-4.6) {$\Gamma_2(x)$, $667$};
+  \foreach \c in {3.5,8.5,20.5} \node[lab] at (\c,-1.6) {$20$};
+  % key
+  \draw[thick] (0,-7.9) -- (2,-7.9);
+  \node[lab,anchor=west] at (2.3,-7.9) {adjacent: blocks disjoint};
+  \draw[densely dashed] (14,-7.9) -- (16,-7.9);
+  \node[lab,anchor=west] at (16.3,-7.9) {nonadjacent: blocks meet in $4$};
 \end{tikzpicture}
-\caption{What a vertex $x$ of a putative $\Kre(4)=\mathrm{srg}(784,116,0,20)$
-would see. The number at each end of an edge between two cells is the number of
-neighbors that a vertex of that cell has in the other cell. In
-$7(4I-A+\frac17J)$ the $116$ neighbors have Gram matrix $28I+J$, so they form a
-rational basis. The blocks $\Gamma(x)\cap\Gamma(y)$ form a
-$3$-$(116,20,3)$ design.}\label{fig:kre4}
+\caption{A putative $\Kre(4)=\mathrm{srg}(784,116,0,20)$ seen from a
+vertex $x$, with three of the $667$ vertices at distance two. The
+neighborhood $\Gamma(x)$ has no edges; each dot stands for about four of
+its points. Each $y$ at distance two has $20$ neighbors $B_y\subset\Gamma(x)$,
+and the distance-two graph $\Gamma_2(x)$ is an $\mathrm{srg}(667,96,0,16)$.
+The blocks $B_y$ form a $3$-$(116,20,3)$ design (\S\ref{sec:sub}).}\label{fig:kre4}
 \end{figure}
 
 \paragraph{Relation to earlier work, and scope.}
@@ -1507,11 +1528,11 @@ Theorem~\ref{thm:sub}, the list of the projector sums of \S\ref{sec:drg}, and
 the precise description of his census in \S\ref{sec:intro}.
 
 %======================================================================
-\FloatBarrier
+\clearpage
 \appendix
 \section{Tables}\label{app:tables}
 
-\begin{table}[htbp]\footnotesize\centering
+\begin{table}[H]\footnotesize\centering
 \caption{The $42$ Smith parameter sets with $n\le10^7$ excluded by
 Theorem~\ref{thm:main} (parts (a), (b)) or Theorem~\ref{thm:vertex}. Rows
 marked 1.2(a) are members of $\Kre(t)$ whose $L=t$ has a prime divisor
@@ -1571,7 +1592,7 @@ $n$&$k$&$\lambda$&$\mu$&$r$&$u$&$g$&test&2nd&family\\\midrule
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]\scriptsize\centering
+\begin{table}[H]\scriptsize\centering
 \caption{Intersection arrays in the BCN tables \cite{DRGtab} with an eigenspace
 failing Theorem~\ref{thm:frame}. Where two eigenvalues are listed, $(\gamma_i)$ and
 ``cubic'' ($\sum k_i\gamma_i^3=0$) refer to the first. The last column names a
