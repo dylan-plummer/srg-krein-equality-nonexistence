@@ -31,7 +31,7 @@
 
 \title{Characteristic vectors and strongly regular graphs\\ at Krein equality}
 \author{Dylan Plummer}
-\date{23 November 2026}
+\date{24 November 2026}
 
 \begin{document}
 \maketitle
@@ -1412,8 +1412,8 @@ This is a Shilla graph whose possible automorphisms were studied by Efimov and
 Makhnev \cite{EM}.
 \end{example}
 
-We scanned the machine-readable BCN tables \cite{DRGtab} (fifteen files,
-downloaded 22~November~2026; $5475$ arrays, $13163$ rational eigenspaces). The
+We scanned fifteen machine-readable files of intersection arrays
+\cite{DRGtab} (IA3P, IA4a, IA5a, IA6b--IA17b, downloaded 22~November~2026; $5475$ arrays, $13163$ rational eigenspaces). The
 scan finds $23$ failing eigenspaces in $13$ arrays, listed in
 Table~\ref{tab:drg} with the strongly regular graph, if any, through which the
 exclusion also follows. For a bipartite array the halved graph has adjacency
@@ -1421,15 +1421,16 @@ matrix $(A^2-kI)/c_2$ on one half; in three cases its complement is an excluded
 strongly regular graph. In
 $\{14,10,3;1,5,12\}$ the fusion of distances $1$ and $3$ would be the
 absolute-bound violation $(50,21,4,12)$, and $\{594,550,45,1;1,45,550,594\}$ was already excluded by the
-parity theorem of Cesarz and Williford \cite{CW}. For the arrays on $350$, $525$
-and $616$ vertices the exclusion does not pass through a strongly regular graph
-that we know to be excluded (at $616$ the fusion $(616,165,44,44)$ is open in
-\cite{Tab}, and Proposition~\ref{prop:second} does not apply to it or its
-complement); we have not found earlier nonexistence proofs,
-but our literature search was targeted rather than systematic.
+parity theorem of Cesarz and Williford \cite{CW}. As A.~E. Brouwer pointed out,
+the array on $616$ vertices (and likewise that on $750$) violates
+\cite[Theorem~4.4.4]{BCN}: $\theta_1$ has multiplicity less than $k$, but
+$\theta_1+1$ does not divide $b_1$ ($28\nmid60$ and $33\nmid77$). On $350$ and
+$525$ vertices that theorem does not apply, and the exclusion does not pass
+through a known excluded strongly regular graph; we have not found earlier
+proofs there, but our literature search was targeted rather than systematic.
 
-The array $\{415,390,16;1,39,400\}$, which is not in the files we scanned, is
-excluded by Theorem~\ref{thm:fixed}: its distance-$3$ graph would have
+The array $\{415,390,16;1,39,400\}$, on $4732$ vertices and so beyond the
+range $v\le4096$ of the BCN tables, is excluded by Theorem~\ref{thm:fixed}: its distance-$3$ graph would have
 spectrum $166^1$, $10^{2905}$, $(-16)^{1826}$, so it would be an
 $\mathrm{srg}(4732,166,0,6)$. (It also fails Theorem~\ref{thm:frame} directly,
 at $\theta=-40$: $(\gamma_i)=(830,-80,11,-80)$, $m=664$, $F=5915$, $c=91$ and
@@ -1476,7 +1477,7 @@ directly and agrees on all of them.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/reach.pdf}
+\includegraphics[width=0.77\textwidth]{figures/reach.pdf}
 \caption{The $2320$ Smith parameter sets with $r\le135$, plotted against $r$
 and $y=2u/(1-2u)=e/(r(r+1))-1$. By Lemma~\ref{lem:param}(iii) a fixed
 $u$ gives a horizontal line. $\Kre(t)$ lies on $y=2/(r+1)$ (dashed), series (i)
@@ -1525,7 +1526,8 @@ censuses of \S\ref{sec:checks}, and he tested Theorem~\ref{thm:main} on many
 existing graphs. His comments led to several clarifications, among them
 Remark~\ref{rem:norton}, the explicit cell data in the proof of
 Theorem~\ref{thm:sub}, the list of the projector sums of \S\ref{sec:drg}, and
-the precise description of his census in \S\ref{sec:intro}.
+the precise description of his census in \S\ref{sec:intro}. We thank
+Andries Brouwer for comments on \S\ref{sec:drg}.
 
 \section*{Use of AI}
 AI assistants were used for the computations, the verification programs and a
@@ -1601,13 +1603,12 @@ $n$&$k$&$\lambda$&$\mu$&$r$&$u$&$g$&test&2nd&family\\\midrule
 \end{table}
 
 \begin{table}[H]\scriptsize\centering
-\caption{Intersection arrays in the BCN tables \cite{DRGtab} with an eigenspace
+\caption{Intersection arrays in the files of \cite{DRGtab} with an eigenspace
 failing Theorem~\ref{thm:frame}. Where two eigenvalues are listed, $(\gamma_i)$ and
 ``cubic'' ($\sum k_i\gamma_i^3=0$) refer to the first. The last column names a
 strongly regular graph that the array would produce (by a fusion of distance
-classes, folding, or the complement of a halved graph), and where that graph
-is excluded; Proposition~\ref{prop:second} does not apply to the graph at
-$616$.}\label{tab:drg}
+classes, folding, or the complement of a halved graph) and where that graph
+is excluded, or an earlier exclusion of the array itself.}\label{tab:drg}
 \setlength{\tabcolsep}{1.7pt}
 \begin{tabular}{rlrrrlcl}\toprule
 $n$&array&$\theta$&$m$&$F$&$(\gamma_i)$&cubic&derived graph\\\midrule
@@ -1615,7 +1616,7 @@ $n$&array&$\theta$&$m$&$F$&$(\gamma_i)$&cubic&derived graph\\\midrule
 350&$\{30,22,9;1,3,20\}$&$0,\ -5$&154, 132&50, 175&$(22,0,-1,2)$&no&Ex.~\ref{ex:shilla}\\
 392&$\{69,56,10;1,14,60\}$&$-15$&46&196&$(23,-5,2,-5)$&yes&$(392,115,18,40)$\\
 525&$\{40,33,3;1,3,30\}$&$-5,\ 5$&308, 132&150, 350&$(88,-11,1,-2)$&no&\\
-616&$\{90,60,12;1,12,72\}$&$2$&252&550&$(225,5,-6,27)$&no&$(616,165,44,44)$: open\\
+616&$\{90,60,12;1,12,72\}$&$2$&252&550&$(225,5,-6,27)$&no&\cite[Thm.~4.4.4]{BCN}\\
 750&$\{112,77,16;1,16,88\}$&$-8$&308&375&$(154,-11,4,-11)$&no&$(750,210,55,60)$ \cite{Koval}\\
 1014&$\{78,77,65,8;1,13,70,78\}$&$-13,\ 13$&198&338&$(66,-11,1,2,-12)$&no&$(507,44,1,4)$ \cite{Koval}\\
 1960&$\{115,96,32,1;1,8,96,115\}$&$-25$&46&980&$(23,-5,2,-5,23)$&yes&$(392,115,18,40)$\\
@@ -1655,9 +1656,9 @@ $(76,30,8,14)$ strongly regular graph, \emph{Linear Algebra Appl.} 527 (2017)
 $77$ points, \emph{J.\ Graph Theory} 7 (1983) 455--461.
 \bibitem{BCN} A.~E. Brouwer, A.~M. Cohen and A.~Neumaier,
 \emph{Distance-Regular Graphs}, Springer, 1989.
-\bibitem{DRGtab} A.~E. Brouwer, Parameters of distance-regular graphs
-(machine-readable BCN tables), \url{https://www.win.tue.nl/~aeb/drg/},
-downloaded 22 November 2026.
+\bibitem{DRGtab} A.~E. Brouwer, Parameters of distance-regular graphs,
+\url{https://aeb.win.tue.nl/drg/drgtables.html}; the files IA3P, IA4a, IA5a
+and IA6b--IA17b are in the same directory, downloaded 22 November 2026.
 \bibitem{Tab} A.~E. Brouwer, Parameters of strongly regular graphs,
 \url{https://aeb.win.tue.nl/graphs/srg/}, accessed 18 November 2026.
 \bibitem{BvM} A.~E. Brouwer and H.~Van Maldeghem, \emph{Strongly Regular

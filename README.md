@@ -92,8 +92,9 @@ design from a shuffled srg(77,16,0,4) through the Norton algebra.
 
 ## Distance-regular graphs (Section 8, Table 3)
 
-The machine-readable BCN tables (files IA3P, IA4a, IA5a, IA6b, ..., IA17b) are available from Brouwer's
-pages, <https://www.win.tue.nl/~aeb/drg/>. They are not redistributed here; put them in a directory
+The machine-readable files of intersection arrays that we scanned (IA3P, IA4a, IA5a, IA6b, ..., IA17b) are in the
+directory of Brouwer's distance-regular graph tables, <https://aeb.win.tue.nl/drg/drgtables.html>
+(for example <https://aeb.win.tue.nl/drg/IA4a>). They are not redistributed here; put them in a directory
 `BCN_DIR` and check them against `data/bcn_files.sha256` (`cd BCN_DIR && sha256sum -c .../bcn_files.sha256`).
 
     python -B frame_check.py BCN_DIR > drg_hits.tsv
