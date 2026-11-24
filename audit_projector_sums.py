@@ -75,7 +75,9 @@ def omitted_sums(p, factors, up, down):
         g = [int(scale*v) for v in proj]
         assert gcd(*g) == 1
         cubic = row_sum == 0 and sum(h*v**3 for h,v in zip(layers,g)) == 0
-        if row_sum and g[0]%2==0 and scale%2==0:
+        # A sum containing E_0 (row_sum = 1) has nonzero first moment: only Theorem 3.1(a), which needs odd norms
+        # and no first moment, applies to it.  Even norms with E_0 are not tested (case (c) would need row_sum = 0).
+        if row_sum and g[0]%2==0:
             yield None
         else:
             yield obstruction(n,int(rank),scale,g,cubic)

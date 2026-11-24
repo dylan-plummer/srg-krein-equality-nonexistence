@@ -43,7 +43,7 @@ parameter sets. At Krein equality the vertices, projected onto the
 eigenspace attaining equality, form a spherical $3$-design. After scaling to
 integral vectors, the vanishing third moment forces every maximal integral
 lattice containing them to be unimodular at the prime $2$ (when the frame
-constant is not divisible by $8$), and van der Blij's congruence for
+constant has small $2$-adic valuation), and van der Blij's congruence for
 characteristic vectors then gives a congruence modulo $4$ in the parameters.
 The condition excludes the triangle-free Krein graphs $\Kre(t)$ for all
 $t\equiv4\pmod 8$, and with them the corresponding extensions of Cameron's
@@ -56,11 +56,12 @@ The first members of these families, $(784,116,0,20)$, $(667,96,0,16)$,
 $(392,115,18,40)$ and $(1080,364,88,140)$, were open in Brouwer's table. A
 projection from one vertex and a second-moment variant give further
 infinite families, among them infinitely many feasible members of Biggs's
-triangle-free families with $\mu=2,4,6$ and a Pell family beginning with
-$(1682,820,378,420)$, as well as exclusions of distance-regular graphs. The
-same tools give short proofs of several known results: there is no
-strongly regular graph with parameters $(266,45,0,9)$, $(75,32,10,16)$,
-$(76,30,8,14)$ or $(289,54,1,12)$, and the $\mathrm{srg}(77,16,0,4)$ is unique.
+triangle-free families with $\mu=2,4,6$ and a Pell family whose first feasible
+member is $(1682,820,378,420)$, as well as exclusions of distance-regular
+graphs. The same tools give short proofs of several known results: there is no
+strongly regular graph with parameters $(75,32,10,16)$, $(76,30,8,14)$ or
+$(289,54,1,12)$; given the nonexistence of $\Kre(3)$, there is none with
+parameters $(266,45,0,9)$; and the $\mathrm{srg}(77,16,0,4)$ is unique.
 \end{abstract}
 
 %======================================================================
@@ -109,11 +110,11 @@ because this matrix has rank $g$, and $\Delta$ does not depend on the choice
 Let $\Gamma$ be a primitive strongly regular graph with integral eigenvalues
 and $q^s_{ss}=0$.
 \begin{enumerate}[label=\textup{(\alph*)}]
-\item If $br+a$ is odd and $v_2(F)\le2$, then $v_2(n)\ge v_2(F)$, so that
-$n/F$ is a rational number with odd denominator, and
+\item If $br+a$ is odd and $v_2(F)\le2$, then
 \[
- \Delta\equiv1+(br+a-1)\,\frac nF\pmod 4 .
+ \Delta\equiv1+(br+a-1)\,\frac nF\pmod 4 ;
 \]
+here $n/F=g/(br+a)$ has odd denominator by \eqref{eq:trace}.
 \item If $br+a$ is even and $v_2(F)\le1$, then $\Delta\equiv1+g\pmod 4$.
 \item If every odd prime divisor of $L$ is $\equiv1\pmod 4$, then
 $\Delta\equiv\odd(b)^{g+1}\pmod 4$.
@@ -129,7 +130,12 @@ $n/F\equiv g+1-\Delta$, which is the form in which it is proved. (Congruences
 between rationals with odd denominators are taken in $\Zt/4\Zt\cong\Z/4$; for
 example $n/F=118/13$ for one of the sets in Corollary~\ref{cor:sporadic}.)
 When (c) applies, (a) reads $\odd(b)^{g+1}\equiv1+(br+a-1)n/F$, a condition on
-the parameters alone; compare Proposition~\ref{prop:second}.
+the parameters alone; compare Proposition~\ref{prop:second}. Part (b) uses
+only the first and second moments and holds for every primitive strongly
+regular graph with integral eigenvalues; Krein equality is needed only for (a)
+and (c). In particular, if $br+a$ is even and $v_2(F)\le1$, then $g$ is even;
+this parity condition never fails on Brouwer's table, so it gives nothing new
+there.
 
 \paragraph{Infinite families.}
 The triangle-free Smith graphs form a one-parameter family \cite[\S8.5]{BvM}:
@@ -177,7 +183,7 @@ concerns the second of Cameron's four families of extendable symmetric designs
 knowledge, open. Part (d) needs one more idea: in \S\ref{sec:sub} we show,
 using the Norton algebra of an eigenspace, that every graph with these
 parameters is the disjointness graph of a design as in (b), so that for every
-$t\ge1$ it exists if and only if $\Kre(t)$ does (Corollary~\ref{cor:equiv}).
+$t\ge2$ it exists if and only if $\Kre(t)$ does (Corollary~\ref{cor:equiv}).
 The rows $392$, $667$, $784$ and $1080$ (with their complements) are the only open entries of
 Brouwer's table ($n\le1300$, accessed 18~November~2026) that we exclude, but
 they are the first members of infinite families. Further
@@ -191,8 +197,9 @@ Biggs's triangle-free families with $\mu=2,4,6$, and a Pell family).
 The same tools give short proofs of several known results.
 Corollary~\ref{cor:equiv} shows that there is no $\mathrm{srg}(266,45,0,9)$,
 proved by Akiyama \cite{Akiyama} with a long formalized lattice argument;
-our proof uses the nonexistence of $\Kre(3)$, which rests on the computer
-classification of biplanes \cite{KO}. The same corollary shows that the
+our proof is short given the nonexistence of $\Kre(3)$, which was proved by
+Gavrilyuk and Makhnev \cite{GM} and also follows from the computer
+classification of the biplanes with $k=11$ \cite{KO}. The same corollary shows that the
 $\mathrm{srg}(77,16,0,4)$ is unique \cite{Br77}, because $S(3,6,22)$ is. The
 second-moment congruence of Proposition~\ref{prop:second}, a special case of
 Kova\v l's discriminant-form condition \cite{Koval}, excludes
@@ -253,7 +260,9 @@ tight spherical designs using the integral lattices spanned by the designs
 together with their design strength \cite{Venkov}; characteristic vectors and
 van der Blij's congruence already appear there. Kova\v l \cite{Koval}
 adapted this to strongly regular graphs through discriminant forms; at
-$392$, $784$ and $1080$ his census leaves $4$, $4$ and $16$ admissible forms. For distance-regular graphs, Krein equality has been used
+$392$, $784$ and $1080$ his census admits $4$, $4$ and $16$ discriminant forms,
+respectively, in each of the two representations (on the $r$- and on the
+$s$-eigenspace side). For distance-regular graphs, Krein equality has been used
 combinatorially, through triple intersection numbers \cite{CJ,GVW}. Euclidean representations have also been combined with algebraic
 identities to exclude individual strongly regular graphs, for example
 $(76,30,8,14)$ \cite{BPR}. The new ingredient here is that we use the
@@ -374,7 +383,9 @@ $F>0$:
 or equivalently $G^2=FG$. Then $m=\operatorname{tr}G/F$. The \emph{first
 moment} vanishes if $\sum_iv_i=0$, and the \emph{third moment} vanishes if
 $\sum_i\ip x{v_i}^3=0$ for all $x\in U$, equivalently
-$\sum_{i,j}G_{ij}^3=0$.
+$\sum_{i,j}G_{ij}^3=0$ (indeed $\|\sum_iv_i\otimes v_i\otimes v_i\|^2=
+\sum_{i,j}G_{ij}^3$, and a symmetric tensor vanishes if and only if its cubic
+form does).
 
 \begin{theorem}\label{thm:frame}
 Let $N\supseteq\sum_i\Zt v_i$ be a maximal integral lattice and $w\in N$ a
@@ -686,7 +697,7 @@ The same computation decides every $t$. For even $t$ we have
 $\Delta\equiv t+3$; Theorem~\ref{thm:main}(a) applies when $8\nmid t$ and
 requires $\Delta\equiv1+et\equiv1$, which fails exactly for $t\equiv4\pmod 8$.
 For odd $t$ the neighbor basis gives $\Delta\equiv t\equiv1+et$, so
-Theorem~\ref{thm:main} (which applies when $t\equiv3\pmod 4$) never excludes
+Theorem~\ref{thm:main} (whose part (a) applies when $t\equiv3\pmod 4$) never excludes
 $\Kre(t)$. Neither does Theorem~\ref{thm:vertex} below ($b=t+3$ is even):
 there $\det W$ lies in the square class of the odd number $k=g$, and
 $k\equiv(-1)^{(k-1)/2}\pmod 4$ holds for every odd $k$. So $\Kre(3)$, which
@@ -740,17 +751,19 @@ induce a strongly regular graph with parameters
 adjacent if and only if the blocks $\Gamma(x)\cap\Gamma(y)$ and
 $\Gamma(x)\cap\Gamma(y')$ of the design in Theorem~\ref{thm:headline}(b) are
 disjoint (Figure~\ref{fig:kre4}). We show that the graph alone determines the
-design. For $t=1$, where \eqref{eq:sub} is the Petersen graph, this is
-trivial, and for $t=2$, where it is $(77,16,0,4)$, it is classical
-\cite{Br77}.
+design. For $t=2$, where \eqref{eq:sub} is $(77,16,0,4)$, this is classical
+\cite{Br77}. For $t=1$, where \eqref{eq:sub} is the Petersen graph, the
+``design'' degenerates: the proof below reconstructs ten distinct $2$-subsets
+of a $5$-set, that is, all of them, and the Petersen graph is their
+disjointness graph.
 
 \begin{theorem}\label{thm:sub}
-Every strongly regular graph with parameters \eqref{eq:sub} is the
-disjointness graph of the blocks of a $3$-$(v,K,t-1)$ design.
+Let $t\ge2$. Every strongly regular graph with parameters \eqref{eq:sub} is
+the disjointness graph of the blocks of a $3$-$(v,K,t-1)$ design.
 \end{theorem}
 
 \begin{corollary}\label{cor:equiv}
-For every $t\ge1$ the following are equivalent: \textup{(i)} a strongly
+For every $t\ge2$ the following are equivalent: \textup{(i)} a strongly
 regular graph with parameters \eqref{eq:sub} exists; \textup{(ii)} a
 $3$-$(v,K,t-1)$ design exists; \textup{(iii)} $\Kre(t)$ exists. In
 particular there is no $\mathrm{srg}(266,45,0,9)$, and none with parameters
@@ -761,16 +774,19 @@ particular there is no $\mathrm{srg}(266,45,0,9)$, and none with parameters
 (i)$\Rightarrow$(ii) is Theorem~\ref{thm:sub}; (ii)$\Rightarrow$(iii) is the
 construction in the proof of Theorem~\ref{thm:headline}(b), which does not
 use $t\equiv4\pmod 8$; and (iii)$\Rightarrow$(i) holds because the second
-subconstituent of $\Kre(t)$ has parameters \eqref{eq:sub}. Now use that
-$\Kre(3)$ does not exist \cite{GM,KO}, and Theorem~\ref{thm:headline}(a).
+subconstituent of $\Kre(t)$ has parameters \eqref{eq:sub}. At $t=3$ a graph
+$\mathrm{srg}(266,45,0,9)$ would give a $3$-$(57,12,2)$ design and hence
+$\Kre(3)$, contradicting \cite{GM,KO}; for $t\equiv4\pmod 8$ use
+Theorem~\ref{thm:headline}(a).
 \end{proof}
 
 This proves Theorem~\ref{thm:headline}(d); the complement $(667,570,489,475)$
 of the case $t=4$ is excluded with it. Brouwer's table credits the
 nonexistence of $\mathrm{srg}(266,45,0,9)$ to Akiyama \cite{Akiyama}, whose
-formalized proof is a long lattice argument. The proof above is short, but it
-rests on the nonexistence of a $3$-$(57,12,2)$ design, that is, on the
-computer classification of the biplanes with $k=11$ \cite{KO}. Since the
+formalized proof is a long lattice argument. The proof above is short given
+the nonexistence of a $3$-$(57,12,2)$ design, that is, of $\Kre(3)$, which was
+proved by Gavrilyuk and Makhnev \cite{GM} and also follows from the computer
+classification of the biplanes with $k=11$ \cite{KO}. Since the
 Witt design $3$-$(22,6,1)$ is unique, Theorem~\ref{thm:sub} also shows that
 the $\mathrm{srg}(77,16,0,4)$ is unique.
 
@@ -813,6 +829,30 @@ $\ip{\mathcal T}{\mathcal S}=g\sigma$, $\ip{\mathcal T'}{\mathcal S}=-g\sigma$
 and $\|\mathcal S\|^2=2g(g-1)$, and expanding
 $\|\mathcal T-\mathcal T'-\kappa\mathcal S\|^2$ gives the claim.
 \end{proof}
+
+\begin{remark}\label{rem:norton}
+So $\Phi(P)\le g(g-2)\sigma^2/(g-1)$ for every primitive strongly regular
+graph and each nontrivial eigenspace, with equality if and only if
+$\mathcal D=\kappa\mathcal S$; Theorem~\ref{thm:sub} is an equality case.
+Let $\theta$ be the eigenvalue and let $\omega_1=\theta/k$ and
+$\omega_0=-(1+\theta)/(n-k-1)$ be the off-diagonal entries of $(n/g)P$ on
+edges and on non-edges. Expanding $\Phi((n/g)P)$ as in Step~1 below, every
+term is determined by $n,k,\lambda,\mu$ except the number $N_4$ of
+$4$-cliques, which enters with coefficient $24(\omega_1-\omega_0)^6>0$; so the
+inequality is an upper bound on $N_4$. On Brouwer's table it excludes nothing
+beyond the absolute bound. In exactly $14$ rows (the pentagon among them) the
+bound reads $N_4\le0$, so that $N_4=0$ and equality holds; these rows are
+realized, known not to exist, or excluded here ($667$ and $784$). In six of
+them ($16$, $27$, $100$, $162$, $324$, $784$) this is the trivial case of a
+Smith graph on its Krein eigenspace, where $\sigma=0$ and both sides vanish,
+and the pentagon is degenerate as well ($g=2$); Lemma~\ref{lem:simplex} then
+says nothing. The nontrivial equality cases among
+existing graphs (the Petersen graph, the complements of $T(6)$ and $T(7)$, and
+the $\mathrm{srg}(77,16,0,4)$) are disjointness graphs of designs, as
+Lemma~\ref{lem:simplex} predicts. Among triangle-free parameter sets with
+$k\le4000$, equality holds only for $\Kre(t)$, trivially, and for the family
+\eqref{eq:sub}.
+\end{remark}
 
 \begin{lemma}\label{lem:simplex}
 If $\mathcal D=\kappa\mathcal S$ and $\sigma>0$, there is a linear bijection
@@ -885,10 +925,15 @@ vertices, $\omega_1^2$), $\Gamma(i)\setminus C$ and $\Gamma(j)\setminus C$
 between $\Gamma(i)\setminus C$ and $\Gamma(j)\setminus C$, $\mu(k-2)$ between
 $C$ and the rest, $(k-\mu)(k-\mu-1)$ between each $\Gamma(\cdot)\setminus C$
 and the rest, and the remaining edges inside the rest. For adjacent $i,j$ the
-cells are $\{i\},\{j\}$, $\Gamma(i)\setminus\{j\}$, $\Gamma(j)\setminus\{i\}$
-and the rest, with $(k-1)(\mu-1)$ edges between the middle two cells and
-$(k-1)(k-\mu)$ between each of them and the rest; for $i=j$ they are $\{i\}$,
-$\Gamma(i)$ and the rest. This gives $Q_{ii}=\Theta^2$,
+cells are $\{i\},\{j\}$ ($x_l=\omega_1$), $\Gamma(i)\setminus\{j\}$ and
+$\Gamma(j)\setminus\{i\}$ ($k-1$ each, $\omega_1\omega_0$) and the remaining
+$n-2k$ vertices ($\omega_0^2$); there are $1$ edge $ij$, $k-1$ edges from $i$
+and from $j$ into their cells, $(k-1)(\mu-1)$ edges between the middle two
+cells, $(k-1)(k-\mu)$ between each of them and the rest, and the remaining
+edges inside the rest. For $i=j$ the cells are $\{i\}$ ($x_l=1$), $\Gamma(i)$
+($k$ vertices, $\omega_1^2$) and the rest ($\omega_0^2$), with $k$ edges at
+$i$, $k(k-1)$ between $\Gamma(i)$ and the rest and $nk/2-k^2$ inside the rest.
+These data give $Q_{ii}=\Theta^2$,
 and, for $i\sim j$ and for nonadjacent $i\ne j$ respectively,
 \[
  Q_{\sim}=\frac{2(t^2+t-1)(t^2+3t+1)^2}{t^3(t+1)^2(t+2)^5},\qquad
@@ -900,7 +945,7 @@ and
  &=\frac{(t^2+t-1)(t^2+2t-1)(t^2+3t+1)^4(t^3+3t^2+t-3)}{t^2(t+1)^5(t+2)^5}
  =\frac{n^2(g-2)}{g(g-1)}\,\Theta^2 .
 \end{align*}
-(We also checked these identities by computer algebra, and the cell
+(As a cross-check we also verified these identities by computer algebra, and the cell
 expansion against a direct evaluation of $\Phi$ on the Petersen, Clebsch,
 Gewirtz, $M_{22}$ and Higman--Sims graphs.) Since $P=(g/n)G$, this says
 $\Phi(P)=g(g-2)\sigma^2/(g-1)$, and Lemma~\ref{lem:norton} gives
@@ -914,7 +959,7 @@ constant $c_i$, and summing coordinates gives
 $vc_i=\varphi_i\cdot\varphi_i=v\kappa P_{ii}=v\kappa g/n$. So every
 coordinate $\zeta$ of $\varphi_i$ satisfies $\zeta^2=\sigma\zeta+\kappa g/n$.
 The roots of this quadratic are $\rho(v-K)$ and $-\rho K$ with
-$\rho=\sigma/(v-2K)>0$: their sum is $\sigma$, and their product
+$\rho=\sigma/(v-2K)>0$ (as $v-2K=t(t^2+t-1)>0$): their sum is $\sigma$, and their product
 $-\rho^2K(v-K)$ equals $-\kappa g/n$ (an identity in $t$). Let $B_i$ be the
 set of coordinates where $\varphi_i$ equals $\rho(v-K)$, and $\chi_i$ its
 characteristic vector. As the coordinates of $\varphi_i$ sum to $0$,
@@ -1053,7 +1098,7 @@ subconstituent.
 \section{Looking from one vertex}\label{sec:vertex}
 
 When $b$ is even, the norms $br+a$ are odd but $v_2(F)\ge1$, and often
-$v_2(F)\ge3$, so Theorem~\ref{thm:main} does not apply. Projecting away from a
+$v_2(F)\ge3$, so neither (a) nor (b) of Theorem~\ref{thm:main} applies. Projecting away from a
 single vertex removes the even denominator instead.
 
 \begin{theorem}\label{thm:vertex}
@@ -1126,8 +1171,8 @@ $\Delta(W)=(-1)^{(g-1)/2}$.
 
 \begin{example}\label{ex:779000}
 Consider $(779000,233740,67320,71340)$, a Smith parameter set with $r=40$,
-$s=-4060$, $e=4100$, $u=3/10$ and $g=7657$. Theorem~\ref{thm:main} does not
-apply: $br+a=403$ is odd and $8\mid F=41000$. For Theorem~\ref{thm:vertex},
+$s=-4060$, $e=4100$, $u=3/10$ and $g=7657$. Neither (a) nor (b) of
+Theorem~\ref{thm:main} applies: $br+a=403$ is odd and $8\mid F=41000$. For Theorem~\ref{thm:vertex},
 $b=10$ divides $e$, the neighbor and non-neighbor frames have constants
 $d=1230$ and $e-d=2870$ with $\gcd(d,e-d)=L=410=2\cdot5\cdot41$, and $5$ and $41$ are
 $\equiv1\pmod4$. Since $(g-1)/2=3828$ is even, the theorem requires
@@ -1169,7 +1214,7 @@ family does not.
 
 \begin{remark}\label{rem:640}
 The other two open Smith rows of the table, $(640,243,66,108)$ and
-$(800,204,28,60)$, have $8\mid F$, so Theorem~\ref{thm:main} does not apply.
+$(800,204,28,60)$, have $8\mid F$, so neither (a) nor (b) of Theorem~\ref{thm:main} applies.
 Theorem~\ref{thm:vertex} applies to both. For $800$ ($u=1/4$, $g=85$, $L=10$)
 its condition $17\equiv1\pmod4$ holds. For $640$ ($u=3/8$, $g=45$, $L=6$)
 the prime $3$ divides $L$. The proof then forces $L'=3$ (Lemma~\ref{lem:even}
@@ -1353,8 +1398,8 @@ Table~\ref{tab:drg} with the strongly regular graph, if any, through which the
 exclusion also follows. For a bipartite array the halved graph has adjacency
 matrix $(A^2-kI)/c_2$ on one half; in three cases its complement is an excluded
 strongly regular graph. In
-$\{14,10,3;1,5,12\}$ the graph would be the absolute-bound violation
-$(50,21,4,12)$, and $\{594,550,45,1;1,45,550,594\}$ was already excluded by the
+$\{14,10,3;1,5,12\}$ the fusion of distances $1$ and $3$ would be the
+absolute-bound violation $(50,21,4,12)$, and $\{594,550,45,1;1,45,550,594\}$ was already excluded by the
 parity theorem of Cesarz and Williford \cite{CW}. For the arrays on $350$, $525$
 and $616$ vertices the exclusion does not pass through a strongly regular graph
 that we know to be excluded (at $616$ the fusion $(616,165,44,44)$ is open in
@@ -1371,10 +1416,13 @@ $\nu=65$, so $\Delta\equiv91^{665}\equiv3$ and $m+1-\Delta\equiv2$.)
 
 More generally, any sum of primitive idempotents with rational entries, such as
 the sum over a Galois orbit \cite{LM}, is a projector, and after scaling it
-gives an integral tight frame. Across the $5475$ arrays we tested all $720522$
+gives an integral tight frame. Its first moment vanishes exactly when the sum
+does not contain the principal idempotent $E_0=\frac1nJ$; Theorem~\ref{thm:frame}(a)
+does not need this, but (b) and (c) do. Across the $5475$ arrays we tested all $720522$
 nonempty proper rational projector sums and obtained nine additional
 exclusions, on $300$, $352$, $784$ (two arrays), $1500$, $12675$, $13872$,
-$14196$ and $14536$ vertices (listed in the repository). In each case a
+$14196$ and $14536$ vertices. Each comes from a sum without $E_0$; the failing
+sums, with their $(\gamma_i)$, $F$ and $m$, are listed in the repository. In each case a
 fusion, halving or folding produces a strongly regular graph already excluded
 above or by Kova\v l \cite{Koval}.
 
@@ -1400,9 +1448,7 @@ Theorem~\ref{thm:vertex} excludes $12$, three of them also excluded by
 Theorem~\ref{thm:main}. Of the $77$ excluded sets, $71$ pass the feasibility
 checks, and $28$ of these have a Proposition~\ref{prop:second} exclusion.
 Conversely, no Smith set with $r\le135$ has a Proposition~\ref{prop:second}
-exclusion that Theorems~\ref{thm:main} and~\ref{thm:vertex} miss. In the
-odd-norm branch of Theorem~\ref{thm:main}, the side condition
-$v_2(n)\ge v_2(F)$ never fails in this range. By
+exclusion that Theorems~\ref{thm:main} and~\ref{thm:vertex} miss. By
 Lemma~\ref{lem:param}(iv) the census is complete for $n\le10^7$; a second,
 independently written program enumerates the $1056$ sets with $n\le10^7$
 directly and agrees on all of them.
@@ -1449,7 +1495,16 @@ distance-regular graphs.
 \section*{Acknowledgments}
 We thank Anton Kova\v l for his discriminant-form census and software, which we
 used to cross-check the table rows and several parameter sets in
-\S\ref{sec:second}.
+\S\ref{sec:second}. We are especially grateful to him for an independent
+verification of this paper: with his own code he rechecked the lattice
+results of \S\S\ref{sec:lattices}--\ref{sec:srg}, the four table rows and the
+short proofs of \S\ref{sec:intro}, the families of
+\S\S\ref{sec:vertex}--\ref{sec:second}, the distance-regular exclusions and the
+censuses of \S\ref{sec:checks}, and he tested Theorem~\ref{thm:main} on many
+existing graphs. His comments led to several clarifications, among them
+Remark~\ref{rem:norton}, the explicit cell data in the proof of
+Theorem~\ref{thm:sub}, the list of the projector sums of \S\ref{sec:drg}, and
+the precise description of his census in \S\ref{sec:intro}.
 
 %======================================================================
 \FloatBarrier

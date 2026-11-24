@@ -13,7 +13,7 @@ in the parameters (Theorem 1.1). Consequences include:
   3-(t(t^2+3t+1), t(t+1), t-1) design for these t (e.g. no 3-(116,20,3) design);
 - no srg((t^2+2t-1)(t^2+3t+1), t^2(t+2), 0, t^2) for t ≡ 4 (mod 8), in particular no srg(667,96,0,16):
   a Norton-algebra argument shows that every such graph comes from a design as above, so for every
-  t >= 1 it exists if and only if Kre(t) does;
+  t >= 2 it exists if and only if Kre(t) does;
 - two further infinite series, starting with srg(392,115,18,40) and srg(1080,364,88,140);
 - further families from a projection away from one vertex and from the second moment (including
   Biggs's triangle-free families with mu = 2, 4, 6 and a Pell family), and exclusions of
@@ -102,6 +102,7 @@ pages, <https://www.win.tue.nl/~aeb/drg/>. They are not redistributed here; put 
     python -B audit_projector_sums.py BCN_DIR
       # 720282 single-residual sums + 240 split sums = 720522; 0 additional failing sums
       # the nine projector-sum exclusions are listed in data/galois_projector_exclusions.md
+    python -B list_projector_sums.py   # the failing sums of those nine arrays (no BCN files needed)
 
 `frame_check.py` is an independent implementation of Theorem 3.1 and Lemma 3.2; `distance_arrays.py`
 and `frame_test.py` are the original implementation used by the projector-sum audit. Control inventory
